@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Introduction: An Interactive Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Energetic & Playful -->
+    <!-- Application Structure Plan: The infographic is structured as a narrative scrollable page to introduce the course. It starts with a hook ("Welcome to the Hub"), explains the core concept, then visually details the first two units ("Unit 1: Music" and "Unit 2: Money"). The central and most important section is a custom HTML/CSS diagram showing how this course acts as a "Collaboration Hub" connecting directly to TOK and Fahrenheit 451. It concludes by summarizing the key skills students will develop. This top-down structure was chosen to move from the general concept to specific examples, making it easy for a new student to understand the course's purpose and its connections to their other studies. -->
+    <!-- Visualization & Content Choices: 
+        1.  Unit Overviews: Data (Unit skills breakdown) -> Goal (Compare composition) -> Viz (Doughnut Charts) -> Justification (Visually appealing way to show the percentage-based focus on different skills like Reading, Speaking, etc., for each unit) -> Library (Chart.js/Canvas).
+        2.  Collaboration Hub: Data (Course connections) -> Goal (Organize/Show Relationships) -> Viz (Custom Flow Diagram) -> Justification (A flow diagram is the clearest way to show a central idea connecting to satellite concepts. Using structured HTML/CSS with Tailwind is the required method to avoid SVG/Mermaid) -> Library/Method (HTML/CSS with Tailwind).
+        3.  Skills Summary: Data (Key 21st-century skills) -> Goal (Compare) -> Viz (Radar Chart) -> Justification (A radar chart is perfect for showing a student's multi-faceted growth across several key areas like Critical Thinking and Communication, providing a more impactful visual than a simple list) -> Library (Chart.js/Canvas).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* gray-50 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <div class="container mx-auto px-4 py-8 md:py-12">
+
+        <!-- Section 1: Welcome / Hook -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-[#073B4C] mb-4">Welcome to the Hub!</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">This isn't just an English course. It's a place where we explore big ideas, ask tough questions, and connect what we learn to the world around us. Let's see how it all fits together.</p>
+        </section>
+
+        <!-- Section 2: Unit Previews -->
+        <section class="mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-[#118AB2] mb-10">Our First Two Adventures</h2>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                <!-- Unit 1 Card -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-center mb-4">Unit 1: How Music Shapes Our Lives</h3>
+                    <div class="chart-container">
+                        <canvas id="unit1Chart"></canvas>
+                    </div>
+                    <p class="text-center text-slate-600 mt-4">We'll explore how music influences our emotions, analyze trends in the music industry, and learn how sound affects our focus and well-being.</p>
+                </div>
+                <!-- Unit 2 Card -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-center mb-4">Unit 2: What is the Value of Money?</h3>
+                    <div class="chart-container">
+                        <canvas id="unit2Chart"></canvas>
+                    </div>
+                    <p class="text-center text-slate-600 mt-4">We'll investigate why money exists, debate the ethics of wealth and charity, and understand the economic forces that change prices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Collaboration Hub -->
+        <section class="mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-[#06D6A0] mb-10">The Collaboration Hub</h2>
+            <div class="max-w-5xl mx-auto p-4 text-center">
+                <!-- Central Hub Card -->
+                <div class="inline-block bg-[#073B4C] text-white rounded-lg shadow-2xl p-6 mb-8">
+                    <h3 class="text-2xl font-bold">This Course</h3>
+                    <p class="text-sm text-slate-300 mt-2">The central hub for connecting ideas and developing critical skills.</p>
+                </div>
+                <!-- Connecting Lines would be complex without SVG, so we use a grid to show connection -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- TOK Card -->
+                    <div class="bg-white rounded-lg shadow-lg p-4 border-t-4 border-[#FF6B6B]">
+                        <h4 class="text-xl font-bold">Theory of Knowledge</h4>
+                        <p class="text-sm text-slate-600 mt-2"><strong>To TOK:</strong> We'll ask: How do we know what a song *really* means? How does shared knowledge give money its value?</p>
+                        <p class="text-sm text-slate-600 mt-2"><strong>From TOK:</strong> You'll use our articles as real-world examples to analyze knowledge claims and explore the reliability of different sources.</p>
+                    </div>
+                    <!-- Literature Card -->
+                    <div class="bg-white rounded-lg shadow-lg p-4 border-t-4 border-[#FFD166]">
+                        <h4 class="text-xl font-bold">Literature: Fahrenheit 451</h4>
+                        <p class="text-sm text-slate-600 mt-2"><strong>To Literature:</strong> We'll discuss how consumerism and mass media in *Fahrenheit 451* prevent critical thought.</p>
+                         <p class="text-sm text-slate-600 mt-2"><strong>From Literature:</strong> You'll use our language for making recommendations (Unit 1) and discussing ethics (Unit 2) to analyze character decisions.</p>
+                    </div>
+                     <!-- Sustainability Card -->
+                    <div class="bg-white rounded-lg shadow-lg p-4 border-t-4 border-[#118AB2]">
+                        <h4 class="text-xl font-bold">Sustainability</h4>
+                        <p class="text-sm text-slate-600 mt-2"><strong>To Sustainability:</strong> We'll explore the environmental impact of music streaming (Unit 1) and the concept of "fast fashion" (Unit 2).</p>
+                        <p class="text-sm text-slate-600 mt-2"><strong>From Sustainability:</strong> You'll use our language for describing trends to analyze data on carbon emissions and our persuasive language skills to create environmental campaigns.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Skills Summary -->
+        <section>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-[#FF6B6B] mb-10">The Skills You'll Build</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto">
+                 <div class="chart-container !max-w-md">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+                <p class="text-center text-slate-600 mt-4">This course is designed to sharpen your abilities in critical thinking, clear communication, creative problem-solving, and effective collaboration.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const tooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        // Chart for Unit 1
+        new Chart(document.getElementById('unit1Chart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Reading', 'Speaking', 'Vocabulary', 'Language Use', 'Listening'],
+                datasets: [{
+                    label: 'Unit 1 Skills Focus',
+                    data: [25, 25, 20, 20, 10],
+                    backgroundColor: ['#118AB2', '#06D6A0', '#FFD166', '#FF6B6B', '#073B4C'],
+                    borderColor: '#ffffff',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipConfig.plugins,
+                    legend: {
+                        position: 'bottom',
+                    },
+                }
+            }
+        });
+
+        // Chart for Unit 2
+        new Chart(document.getElementById('unit2Chart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Reading', 'Speaking', 'Vocabulary', 'Language Use', 'Listening'],
+                datasets: [{
+                    label: 'Unit 2 Skills Focus',
+                    data: [20, 25, 20, 25, 10],
+                    backgroundColor: ['#118AB2', '#06D6A0', '#FFD166', '#FF6B6B', '#073B4C'],
+                    borderColor: '#ffffff',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                 plugins: {
+                    ...tooltipConfig.plugins,
+                    legend: {
+                        position: 'bottom',
+                    },
+                }
+            }
+        });
+
+        // Chart for Skills
+        new Chart(document.getElementById('skillsChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Critical Thinking', 'Communication', 'Collaboration', 'Creativity', 'Analysis'],
+                datasets: [{
+                    label: 'Your Skill Growth',
+                    data: [90, 85, 75, 80, 95],
+                    backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                    borderColor: '#FF6B6B',
+                    pointBackgroundColor: '#FF6B6B',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#FF6B6B'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                        pointLabels: { font: { size: 14 } },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: 'rgba(0,0,0,0.5)'
+                        }
+                    }
+                },
+                 plugins: {
+                    ...tooltipConfig.plugins,
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
