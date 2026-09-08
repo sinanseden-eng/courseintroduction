@@ -548,6 +548,48 @@
       font-size: 13px;
     }
 
+    .connections-section { background: var(--navy); color: var(--white); }
+    .connections-inner { width: var(--page); margin: 0 auto; padding: 100px 0; }
+    .connections-section .section-label { color: #ffd166; }
+    .connections-section .section-heading p { color: rgba(255,255,255,.7); }
+    .connection-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+    .connection-tab {
+      border: 1px solid rgba(255,255,255,.16); border-radius: 14px;
+      background: rgba(255,255,255,.07); padding: 12px 16px;
+      color: rgba(255,255,255,.72); font-weight: 850;
+    }
+    .connection-tab[aria-selected="true"] {
+      border-color: #ffd166; background: #ffd166; color: #342400;
+    }
+    .connection-panel {
+      border: 1px solid rgba(255,255,255,.14); border-radius: 30px;
+      background: rgba(255,255,255,.07); padding: 28px;
+    }
+    .connection-panel[hidden] { display: none; }
+    .connection-intro {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 24px; margin-bottom: 22px;
+    }
+    .connection-intro h3 {
+      margin: 0; font-size: clamp(1.8rem,4vw,3rem);
+      line-height: 1.05; letter-spacing: -.04em;
+    }
+    .connection-intro p { max-width: 500px; margin: 5px 0 0; color: rgba(255,255,255,.68); }
+    .connection-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+    .course-lane { border-radius: 18px; background: var(--white); padding: 20px; color: var(--ink); }
+    .course-lane span {
+      color: var(--indigo); font-size: 11px; font-weight: 950;
+      letter-spacing: .1em; text-transform: uppercase;
+    }
+    .course-lane h4 { margin: 8px 0; font-size: 1.05rem; }
+    .course-lane p { margin: 0; color: var(--muted); font-size: 13px; }
+    .shared-outcome {
+      margin-top: 14px; border-left: 4px solid #ffd166; border-radius: 14px;
+      background: rgba(255,209,102,.1); padding: 16px 18px;
+      color: rgba(255,255,255,.78);
+    }
+    .shared-outcome strong { color: #ffd166; }
+
     .learning-loop {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -881,7 +923,8 @@
       }
 
       .theme-grid,
-      .learning-loop {
+      .learning-loop,
+      .connection-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -938,7 +981,8 @@
 
       .activity-toolbar,
       .activity-status,
-      footer {
+      footer,
+      .connection-intro {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -971,7 +1015,8 @@
 
     @media (max-width: 500px) {
       .theme-grid,
-      .learning-loop {
+      .learning-loop,
+      .connection-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1046,6 +1091,7 @@
       </a>
       <div class="nav-links">
         <a href="#themes">Theme challenge</a>
+        <a href="#connections">Course connections</a>
         <a href="#learning">How we learn</a>
         <a href="#platforms">Our platforms</a>
         <a href="#target">TOEFL ITP</a>
@@ -1116,6 +1162,56 @@
           <span id="themeStatus" aria-live="polite">No unit names revealed yet.</span>
           <span>Tip: there is no single wrong first impression—explain your evidence.</span>
         </div>
+      </div>
+    </section>
+
+    <section class="connections-section" id="connections">
+      <div class="connections-inner">
+        <div class="section-heading">
+          <span class="section-label">Interdisciplinary learning</span>
+          <h2>One big question. Four connected classrooms.</h2>
+          <p>
+            IS English, Theory of Knowledge, CS Course and EFS Sustainable Development
+            approach the same issue from different angles. Switch terms to see two examples.
+          </p>
+        </div>
+
+        <div class="connection-tabs" role="tablist" aria-label="Interdisciplinary examples">
+          <button class="connection-tab" id="term1Tab" role="tab" aria-selected="true" aria-controls="term1Panel" type="button">
+            First term · Unit 3
+          </button>
+          <button class="connection-tab" id="term2Tab" role="tab" aria-selected="false" aria-controls="term2Panel" type="button">
+            Second term · Unit 9
+          </button>
+        </div>
+
+        <article class="connection-panel" id="term1Panel" role="tabpanel" aria-labelledby="term1Tab">
+          <div class="connection-intro">
+            <h3>Why do we read?</h3>
+            <p>Reading becomes a question about knowledge, memory, freedom, empathy and access—not merely pages completed.</p>
+          </div>
+          <div class="connection-grid">
+            <div class="course-lane"><span>IS English</span><h4>Language & literacy</h4><p>Compare print and visual narratives, infer meaning, discuss empathy and build evidence-based writing.</p></div>
+            <div class="course-lane"><span>Theory of Knowledge</span><h4>How stories create knowledge</h4><p>Examine whether memory, language and personal perspective make knowledge reliable or selective.</p></div>
+            <div class="course-lane"><span>CS Course · The Giver</span><h4>Memory, choice & society</h4><p>Connect the novel’s treatment of shared memory and controlled knowledge with the unit’s inquiry into reading.</p></div>
+            <div class="course-lane"><span>EFS Sustainable Development</span><h4>Access & informed communities</h4><p>Explore how literacy, inclusive education and access to trustworthy information support responsible participation.</p></div>
+          </div>
+          <div class="shared-outcome"><strong>Shared outcome:</strong> a “Knowledge, Memory and Choice” inquiry exhibition combining textual evidence, TOK questions and a sustainability perspective.</div>
+        </article>
+
+        <article class="connection-panel" id="term2Panel" role="tabpanel" aria-labelledby="term2Tab" hidden>
+          <div class="connection-intro">
+            <h3>Is speed important?</h3>
+            <p>Students investigate when speed improves life—and when it weakens attention, judgement or long-term sustainability.</p>
+          </div>
+          <div class="connection-grid">
+            <div class="course-lane"><span>IS English</span><h4>Balanced argument</h4><p>Analyse modern pace, technology and transport, then present a balanced for-and-against position.</p></div>
+            <div class="course-lane"><span>Theory of Knowledge</span><h4>Fast information, careful knowledge</h4><p>Question whether faster access produces better understanding and how time pressure changes evidence evaluation.</p></div>
+            <div class="course-lane"><span>CS Course · Fahrenheit 451</span><h4>Speed, screens & reflection</h4><p>Connect the novel’s fast, media-saturated society with attention, independent thought and meaningful reading.</p></div>
+            <div class="course-lane"><span>EFS Sustainable Development</span><h4>Fast systems, lasting impact</h4><p>Evaluate transport, technology and consumption through efficiency, environmental impact and long-term responsibility.</p></div>
+          </div>
+          <div class="shared-outcome"><strong>Shared outcome:</strong> a “When Should We Slow Down?” future forum where teams evaluate one school or city system and defend a sustainable recommendation.</div>
+        </article>
       </div>
     </section>
 
@@ -1438,6 +1534,18 @@
     revealButton.addEventListener("click", () => {
       document.querySelectorAll(".theme-card").forEach((card, index) => {
         setCardStage(card, units[index], 2);
+      });
+    });
+
+    const connectionTabs = [...document.querySelectorAll(".connection-tab")];
+    const connectionPanels = [...document.querySelectorAll(".connection-panel")];
+
+    connectionTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        connectionTabs.forEach((item) => item.setAttribute("aria-selected", String(item === tab)));
+        connectionPanels.forEach((panel) => {
+          panel.hidden = panel.id !== tab.getAttribute("aria-controls");
+        });
       });
     });
 
