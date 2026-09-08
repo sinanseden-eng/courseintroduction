@@ -1,342 +1,1447 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Introduction: An Interactive Infographic</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Energetic & Playful -->
-    <!-- Application Structure Plan: The infographic is structured as a narrative scrollable page to introduce the course. It starts with a hook ("Welcome to IS English Class"), explains the core concept, then visually details the first two units. The central section shows how this course connects with other classes. It concludes by showcasing learning activities, digital tools, a dedicated reading program, and the ultimate exam target. This top-down structure was chosen to move from the general concept to specific examples, making it easy for a new student to understand the course's purpose. -->
-    <!-- Visualization & Content Choices: 
-         1.  Unit Overviews: Data (Unit skills breakdown) -> Goal (Compare composition) -> Viz (Doughnut Charts) -> Justification (Visually appealing way to show the percentage-based focus on different skills) -> Library (Chart.js/Canvas).
-         2.  Collaboration Hub: Data (Course connections) -> Goal (Organize/Show Relationships) -> Viz (Custom Flow Diagram) -> Justification (A flow diagram is the clearest way to show a central idea connecting to satellite concepts. Using structured HTML/CSS is the required method to avoid SVG/Mermaid) -> Library/Method (HTML/CSS with Tailwind).
-         3.  Skills Summary: Data (Key 21st-century skills) -> Goal (Compare) -> Viz (Radar Chart) -> Justification (A radar chart is perfect for showing multi-faceted growth across several key areas) -> Library (Chart.js/Canvas).
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-image: url('https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 40vh;
-        }
-        .content-card {
-            background-color: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Discover Futures 4 course introduction: explore eight big questions, differentiated reading with Sensations, writing with ScriboWriting, and preparation for TOEFL ITP."
+  >
+  <title>Discover Futures 4 | Course Introduction</title>
+  <style>
+    :root {
+      --ink: #12213f;
+      --muted: #596784;
+      --paper: #f7f8fc;
+      --white: #ffffff;
+      --navy: #111a35;
+      --indigo: #5a49dc;
+      --purple: #8c52e8;
+      --coral: #ff6b6b;
+      --orange: #ff9b42;
+      --mint: #43c6ac;
+      --sky: #3da9fc;
+      --line: rgba(18, 33, 63, 0.12);
+      --shadow: 0 24px 70px rgba(31, 39, 91, 0.14);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --page: min(1180px, calc(100% - 36px));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 4%, rgba(255, 155, 66, 0.18), transparent 25rem),
+        radial-gradient(circle at 94% 22%, rgba(90, 73, 220, 0.15), transparent 28rem),
+        var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 4px solid rgba(61, 169, 252, 0.55);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 100;
+      transform: translateY(-180%);
+      border-radius: 12px;
+      background: var(--white);
+      padding: 10px 14px;
+      color: var(--navy);
+      font-weight: 800;
+      box-shadow: var(--shadow);
+      transition: transform 160ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(17, 26, 53, 0.92);
+      color: var(--white);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      width: var(--page);
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--orange), var(--coral) 48%, var(--purple));
+      box-shadow: 0 8px 22px rgba(255, 107, 107, 0.35);
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      border-radius: 999px;
+      padding: 9px 14px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: color 160ms ease, background 160ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(112deg, rgba(17, 26, 53, 0.98) 6%, rgba(32, 34, 87, 0.94) 48%, rgba(90, 73, 220, 0.86)),
+        url("assets/discover-futures-themes.webp") center / cover;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 390px;
+      height: 390px;
+      right: -120px;
+      top: -190px;
+      background: rgba(255, 155, 66, 0.2);
+      filter: blur(3px);
+    }
+
+    .hero::after {
+      width: 240px;
+      height: 240px;
+      left: 42%;
+      bottom: -180px;
+      background: rgba(67, 198, 172, 0.2);
+    }
+
+    .hero-inner {
+      position: relative;
+      width: var(--page);
+      min-height: 620px;
+      margin: 0 auto;
+      padding: 96px 0 82px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.72fr);
+      align-items: center;
+      gap: 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 7px 12px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(3.2rem, 7vw, 6.8rem);
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+    }
+
+    .hero h1 span {
+      color: #ffd166;
+    }
+
+    .hero-lead {
+      max-width: 720px;
+      margin: 28px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 0;
+      border-radius: 15px;
+      padding: 12px 18px;
+      font-weight: 850;
+      text-decoration: none;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #ffd166, var(--orange));
+      color: #3e2703;
+      box-shadow: 0 14px 32px rgba(255, 155, 66, 0.28);
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.09);
+      color: var(--white);
+    }
+
+    .hero-card {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 26px;
+      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card-kicker {
+      margin: 0 0 18px;
+      color: #ffd166;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero-stat {
+      padding: 17px 0;
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 14px;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-stat:first-of-type {
+      border-top: 0;
+    }
+
+    .hero-stat strong {
+      font-size: 2.1rem;
+      line-height: 1;
+    }
+
+    .hero-stat span {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+    }
+
+    .section {
+      width: var(--page);
+      margin: 0 auto;
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading.center {
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 13px;
+      color: var(--indigo);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+    }
+
+    .section-heading p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .activity-shell {
+      border: 1px solid rgba(90, 73, 220, 0.16);
+      border-radius: 36px;
+      background: rgba(255, 255, 255, 0.78);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .activity-toolbar {
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .activity-instructions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: #eeeaff;
+      color: var(--indigo);
+      font-weight: 950;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .tool-button {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--white);
+      padding: 9px 13px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 850;
+      box-shadow: 0 8px 18px rgba(18, 33, 63, 0.06);
+      transition: transform 150ms ease, border-color 150ms ease;
+    }
+
+    .tool-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(90, 73, 220, 0.45);
+    }
+
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .theme-card {
+      --bg-x: 0%;
+      --bg-y: 0%;
+      position: relative;
+      min-width: 0;
+      aspect-ratio: 0.89;
+      overflow: hidden;
+      border: 0;
+      border-radius: 22px;
+      padding: 0;
+      isolation: isolate;
+      background-image: url("assets/discover-futures-themes.webp");
+      background-repeat: no-repeat;
+      background-size: 400% 200%;
+      background-position: var(--bg-x) var(--bg-y);
+      color: var(--white);
+      text-align: left;
+      box-shadow: 0 16px 36px rgba(22, 30, 62, 0.15);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .theme-card:hover {
+      z-index: 2;
+      transform: translateY(-5px);
+      box-shadow: 0 24px 46px rgba(22, 30, 62, 0.25);
+    }
+
+    .theme-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(5, 12, 30, 0.02) 26%, rgba(5, 12, 30, 0.88) 100%);
+      transition: background 220ms ease;
+    }
+
+    .theme-card[data-stage="1"]::before,
+    .theme-card[data-stage="2"]::before {
+      background: linear-gradient(180deg, rgba(5, 12, 30, 0.2), rgba(5, 12, 30, 0.96));
+    }
+
+    .card-stage {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+
+    .mystery-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      border-radius: 999px;
+      background: rgba(8, 15, 37, 0.6);
+      font-size: 20px;
+      font-weight: 950;
+      backdrop-filter: blur(10px);
+    }
+
+    .stage-copy {
+      transform: translateY(0);
+      transition: transform 180ms ease;
+    }
+
+    .theme-card:hover .stage-copy {
+      transform: translateY(-3px);
+    }
+
+    .stage-kicker {
+      display: block;
+      margin-bottom: 5px;
+      color: #ffd166;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .stage-title {
+      display: block;
+      font-size: clamp(1rem, 1.8vw, 1.36rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+    }
+
+    .stage-text {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .theme-tags {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .theme-tag {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.11);
+      padding: 4px 7px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 10px;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+    }
+
+    .activity-status {
+      min-height: 24px;
+      margin: 16px 4px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .learning-loop {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .loop-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 240px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      padding: 24px;
+      box-shadow: 0 14px 35px rgba(18, 33, 63, 0.08);
+    }
+
+    .loop-card::after {
+      content: attr(data-step);
+      position: absolute;
+      right: 12px;
+      bottom: -29px;
+      color: rgba(90, 73, 220, 0.07);
+      font-size: 7rem;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .loop-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: #eeeaff;
+      font-size: 22px;
+    }
+
+    .loop-card:nth-child(2) .loop-icon {
+      background: #e5faf4;
+    }
+
+    .loop-card:nth-child(3) .loop-icon {
+      background: #fff0f5;
+    }
+
+    .loop-card:nth-child(4) .loop-icon {
+      background: #fff4df;
+    }
+
+    .loop-card h3 {
+      margin: 20px 0 8px;
+      font-size: 1.28rem;
+      letter-spacing: -0.025em;
+    }
+
+    .loop-card p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .platform-section {
+      width: 100%;
+      background: linear-gradient(180deg, rgba(90, 73, 220, 0.06), rgba(67, 198, 172, 0.08));
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .platform-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .platform-media {
+      height: 270px;
+      display: grid;
+      place-items: center;
+      background: #f7f8fb;
+      padding: 24px;
+    }
+
+    .platform-card.sensations .platform-media {
+      background: #e7f4fa;
+    }
+
+    .platform-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .platform-copy {
+      padding: 28px;
+    }
+
+    .platform-type {
+      display: inline-block;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: #eeeaff;
+      color: var(--indigo);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .sensations .platform-type {
+      background: #e7f4fa;
+      color: #0c6c98;
+    }
+
+    .platform-copy h3 {
+      margin: 0;
+      font-size: 1.85rem;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .platform-copy p {
+      margin: 14px 0 0;
+      color: var(--muted);
+    }
+
+    .platform-list {
+      margin: 18px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .platform-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: #34405a;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .platform-list li::before {
+      content: "✓";
+      width: 21px;
+      height: 21px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      margin-top: 1px;
+      border-radius: 999px;
+      background: #e5faf4;
+      color: #087b65;
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .toefl-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 38px;
+      background:
+        radial-gradient(circle at 92% 12%, rgba(255, 155, 66, 0.22), transparent 22rem),
+        linear-gradient(135deg, #111a35, #272763 58%, #3f3193);
+      color: var(--white);
+      box-shadow: 0 30px 90px rgba(17, 26, 53, 0.24);
+    }
+
+    .toefl-top {
+      padding: 48px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      align-items: center;
+      gap: 54px;
+    }
+
+    .toefl-copy .section-label {
+      color: #ffd166;
+    }
+
+    .toefl-copy h2 {
+      margin: 0;
+      font-size: clamp(2.5rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .toefl-copy p {
+      max-width: 700px;
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 1.05rem;
+    }
+
+    .toefl-logo {
+      border-radius: 22px;
+      background: var(--white);
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .toefl-skills {
+      padding: 0 48px 48px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .toefl-skill {
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .toefl-skill span {
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 11px;
+      background: rgba(255, 209, 102, 0.16);
+      color: #ffd166;
+      font-weight: 950;
+    }
+
+    .toefl-skill h3 {
+      margin: 14px 0 6px;
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+
+    .toefl-skill p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 13px;
+    }
+
+    .toefl-note {
+      margin: 0 48px 40px;
+      border-left: 4px solid #ffd166;
+      padding: 4px 0 4px 16px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+    }
+
+    .toefl-note a {
+      color: #ffd166;
+      font-weight: 800;
+    }
+
+    .finale {
+      padding-top: 40px;
+      text-align: center;
+    }
+
+    .finale-card {
+      border: 1px solid rgba(90, 73, 220, 0.15);
+      border-radius: 30px;
+      background: var(--white);
+      padding: 46px 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .finale h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      letter-spacing: -0.05em;
+    }
+
+    .finale p {
+      max-width: 680px;
+      margin: 14px auto 26px;
+      color: var(--muted);
+    }
+
+    .finale .button {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    footer {
+      width: var(--page);
+      margin: 0 auto;
+      padding: 38px 0 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-line {
+      font-weight: 850;
+      color: var(--ink);
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .hero-card {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .hero-card-kicker {
+        grid-column: 1 / -1;
+      }
+
+      .hero-stat {
+        grid-template-columns: 1fr;
+        border-top: 0;
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 4px 16px;
+      }
+
+      .theme-grid,
+      .learning-loop {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .toefl-top {
+        grid-template-columns: 1fr;
+      }
+
+      .toefl-logo {
+        max-width: 360px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --page: min(100% - 24px, 1180px);
+      }
+
+      .nav {
+        min-height: 62px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 74px 0 68px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 16vw, 5.2rem);
+      }
+
+      .hero-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stat {
+        grid-template-columns: 54px 1fr;
+        border-left: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 14px 0;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .activity-shell {
+        border-radius: 25px;
+        padding: 12px;
+      }
+
+      .activity-toolbar,
+      .activity-status,
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .toolbar-actions {
+        justify-content: flex-start;
+      }
+
+      .platform-grid,
+      .toefl-skills {
+        grid-template-columns: 1fr;
+      }
+
+      .platform-media {
+        height: 230px;
+      }
+
+      .toefl-top {
+        padding: 34px 24px 28px;
+      }
+
+      .toefl-skills {
+        padding: 0 24px 28px;
+      }
+
+      .toefl-note {
+        margin: 0 24px 28px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .theme-grid,
+      .learning-loop {
+        grid-template-columns: 1fr;
+      }
+
+      .card-stage {
+        padding: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+
+    @media print {
+      .site-header,
+      .hero-actions,
+      .activity-toolbar,
+      .activity-status,
+      .finale {
+        display: none !important;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .hero {
+        color: #111a35;
+        background: #fff;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 30px 0;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        color: #111a35;
+        background: #f2f4f8;
+      }
+
+      .hero-lead,
+      .hero-stat span {
+        color: #596784;
+      }
+
+      .section {
+        padding: 30px 0;
+      }
+    }
+  </style>
 </head>
-<body class="text-slate-800">
+<body>
+  <a class="skip-link" href="#main">Skip to the course introduction</a>
 
-    <div class="container mx-auto px-4 py-8 md:py-12">
+  <header class="site-header">
+    <nav class="nav" aria-label="Course introduction">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>Discover Futures 4</span>
+      </a>
+      <div class="nav-links">
+        <a href="#themes">Theme challenge</a>
+        <a href="#learning">How we learn</a>
+        <a href="#platforms">Our platforms</a>
+        <a href="#target">TOEFL ITP</a>
+      </div>
+    </nav>
+  </header>
 
-        <!-- Section 1: Welcome / Hook -->
-        <section class="text-center mb-16">
-            <div class="content-card inline-block p-8">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-[#073B4C] mb-4">Welcome to IS English Class</h1>
-                <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">This is a space where we explore big ideas, ask tough questions, and connect what we learn to the world around us.</p>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">IS English · Course Introduction</p>
+          <h1>Eight big questions. <span>One year of stronger English.</span></h1>
+          <p class="hero-lead">
+            Discover Futures 4 uses ideas from music, money, reading, competition,
+            memory, home, color and speed to develop the language—and the thinking—
+            needed for real communication and our year-end TOEFL ITP target.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#themes">Start the theme challenge <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="#target">See our ultimate target</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Course at a glance">
+          <p class="hero-card-kicker">The year at a glance</p>
+          <div class="hero-stat">
+            <strong>8</strong>
+            <span>big thematic questions to investigate</span>
+          </div>
+          <div class="hero-stat">
+            <strong>4</strong>
+            <span>core skills working together every week</span>
+          </div>
+          <div class="hero-stat">
+            <strong>1</strong>
+            <span>shared destination: TOEFL ITP</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="themes">
+      <div class="section-heading center">
+        <span class="section-label">The opening challenge</span>
+        <h2>Can you guess what we will explore?</h2>
+        <p>
+          Look closely before clicking. Discuss what you notice, predict the unit’s
+          big question and connect the image to something you already know.
+        </p>
+      </div>
+
+      <div class="activity-shell">
+        <div class="activity-toolbar">
+          <div class="activity-instructions">
+            <span class="step-number" aria-hidden="true">2×</span>
+            <span><strong>Click once</strong> for discussion prompts. <strong>Click again</strong> to reveal the unit.</span>
+          </div>
+          <div class="toolbar-actions" aria-label="Theme activity controls">
+            <button class="tool-button" id="resetThemes" type="button">Reset activity</button>
+            <button class="tool-button" id="revealThemes" type="button">Reveal all units</button>
+          </div>
+        </div>
+
+        <div class="theme-grid" id="themeGrid" aria-label="Eight interactive course themes"></div>
+
+        <div class="activity-status">
+          <span id="themeStatus" aria-live="polite">No unit names revealed yet.</span>
+          <span>Tip: there is no single wrong first impression—explain your evidence.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="learning">
+      <div class="section-heading">
+        <span class="section-label">How we learn</span>
+        <h2>A simple loop, repeated with better questions.</h2>
+        <p>
+          Each unit connects content, communication and reflection. We do more than
+          collect vocabulary: we use English to notice, question, explain and improve.
+        </p>
+      </div>
+
+      <div class="learning-loop">
+        <article class="loop-card" data-step="1">
+          <div class="loop-icon" aria-hidden="true">◉</div>
+          <h3>Explore</h3>
+          <p>Begin with a big question, observe real-world ideas and activate what you already know.</p>
+        </article>
+        <article class="loop-card" data-step="2">
+          <div class="loop-icon" aria-hidden="true">⌁</div>
+          <h3>Read & listen</h3>
+          <p>Find main ideas, evidence, relationships and implied meaning across different kinds of texts.</p>
+        </article>
+        <article class="loop-card" data-step="3">
+          <div class="loop-icon" aria-hidden="true">↗</div>
+          <h3>Speak & write</h3>
+          <p>Turn ideas into discussions, explanations, arguments, reviews and carefully structured writing.</p>
+        </article>
+        <article class="loop-card" data-step="4">
+          <div class="loop-icon" aria-hidden="true">✓</div>
+          <h3>Reflect & improve</h3>
+          <p>Use feedback, revise your choices and transfer each new strategy to the next challenge.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="platform-section" id="platforms">
+      <div class="section">
+        <div class="section-heading center">
+          <span class="section-label">Our learning platforms</span>
+          <h2>Different tools. Different jobs. One learning journey.</h2>
+          <p>
+            Sensations supports differentiated reading routes, while ScriboWriting
+            gives our writing process a clear home from first idea to stronger final draft.
+          </p>
+        </div>
+
+        <div class="platform-grid">
+          <article class="platform-card sensations">
+            <div class="platform-media">
+              <img
+                src="assets/sensations-english.png"
+                alt="Sensations English platform shown on a laptop and phone"
+                loading="lazy"
+              >
             </div>
-        </section>
-
-        <!-- Section 2: Unit Previews -->
-        <section class="mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-10 drop-shadow-md">Our First Two Adventures</h2>
-            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-                <!-- Unit 1 Card -->
-                <div class="content-card p-6">
-                    <h3 class="text-2xl font-bold text-center mb-4">Unit 1: How Music Shapes Our Lives</h3>
-                    <div class="chart-container">
-                        <canvas id="unit1Chart"></canvas>
-                    </div>
-                    <p class="text-center text-slate-600 mt-4">We'll explore how music influences our emotions, analyze trends, and learn how sound affects our focus and well-being.</p>
-                </div>
-                <!-- Unit 2 Card -->
-                <div class="content-card p-6">
-                    <h3 class="text-2xl font-bold text-center mb-4">Unit 2: What is the Value of Money?</h3>
-                    <div class="chart-container">
-                        <canvas id="unit2Chart"></canvas>
-                    </div>
-                    <p class="text-center text-slate-600 mt-4">We'll investigate why money exists, debate the ethics of wealth, and understand the economic forces that change prices.</p>
-                </div>
+            <div class="platform-copy">
+              <span class="platform-type">Differentiated reading</span>
+              <h3>Sensations English</h3>
+              <p>
+                Our reading platform helps us offer appropriate levels of support
+                and challenge, so students can approach shared topics through a route
+                suited to their current reading needs.
+              </p>
+              <ul class="platform-list">
+                <li>Build reading confidence at an appropriate pace</li>
+                <li>Practise main ideas, details, inference and vocabulary in context</li>
+                <li>Use different reading routes to work toward shared class goals</li>
+              </ul>
             </div>
-        </section>
+          </article>
 
-        <!-- Section 3: Collaboration Hub -->
-        <section class="mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-10 drop-shadow-md">The Collaboration Hub</h2>
-             <div class="content-card max-w-5xl mx-auto p-8 text-center">
-                 <div class="inline-block bg-[#073B4C] text-white rounded-lg shadow-2xl p-6 mb-8">
-                     <h3 class="text-2xl font-bold">Our English Class</h3>
-                     <p class="text-sm text-slate-300 mt-2">A space for connection and inquiry that links our other learning experiences together.</p>
-                 </div>
-                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                     <div class="bg-white rounded-lg shadow-lg p-4 border-t-4 border-[#FF6B6B]">
-                         <h4 class="text-xl font-bold">TOK Class</h4>
-                         <p class="text-sm text-slate-600 mt-2"><strong>To TOK:</strong> We'll ask: How do we know what a song *really* means? How does shared knowledge give money its value?</p>
-                         <p class="text-sm text-slate-600 mt-2"><strong>From TOK:</strong> You'll use our articles as real-world examples to analyze knowledge claims.</p>
-                     </div>
-                     <div class="bg-white rounded-lg shadow-lg p-4 border-t-4 border-[#FFD166]">
-                         <h4 class="text-xl font-bold">CS English Class</h4>
-                         <p class="text-sm text-slate-600 mt-2"><strong>To Literature:</strong> We'll discuss how consumerism in *Fahrenheit 451* prevents critical thought.</p>
-                          <p class="text-sm text-slate-600 mt-2"><strong>From Literature:</strong> You'll use our language for making recommendations and discussing ethics to analyze characters.</p>
-                     </div>
-                     <div class="bg-white rounded-lg shadow-lg p-4 border-t-4 border-[#118AB2]">
-                         <h4 class="text-xl font-bold">Sustainability Class ♻️</h4>
-                         <p class="text-sm text-slate-600 mt-2"><strong>To Sustainability:</strong> We'll explore the environmental impact of music streaming and "fast fashion".</p>
-                         <p class="text-sm text-slate-600 mt-2"><strong>From Sustainability:</strong> You'll use our language for describing trends to analyze data on carbon emissions.</p>
-                     </div>
-                 </div>
-             </div>
-        </section>
-
-        <!-- Section 4: Skills & Activities -->
-        <section class="mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-10 drop-shadow-md">Reading, Speaking & Writing Activities</h2>
-            <div class="content-card p-8 max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-                    <div class="lg:col-span-1">
-                        <h3 class="text-2xl font-bold text-center mb-4">How We Learn</h3>
-                        <div class="space-y-4">
-                            <div class="bg-white p-4 rounded-lg shadow flex items-center">
-                                <img src="https://wpvip.edutopia.org/wp-content/uploads/2022/10/iStock-1126825158_master.jpg?w=2880&quality=85" alt="Philosophical Chairs" class="w-20 h-20 object-cover rounded-lg mr-4" onerror="this.onerror=null;this.src='https://placehold.co/80x80/cccccc/ffffff?text=Debate';">
-                                <div>
-                                    <p class="font-bold text-lg">🗣️ Philosophical Chairs</p>
-                                    <p class="text-sm text-slate-600">Physically move to show your stance and defend your position in a debate.</p>
-                                </div>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg shadow flex items-center">
-                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkmXd-2-k_43MHFoO_8pszvzGPD_RlQrjKgCIPCj7KlhK6JhEx2wks-pfUPjHMn-QPU-Xlqa3QX4KYYfDrHuIyjGhQRcEWf7LdA1niWDd0ihQ8Rdy2Z9ZKLQ9VRfguYtuEQXH7z8Y7bB9e/s1600/A12-TT-jigsaw.jpg" alt="Jigsaw Reading" class="w-20 h-20 object-cover rounded-lg mr-4" onerror="this.onerror=null;this.src='https://placehold.co/80x80/cccccc/ffffff?text=Jigsaw';">
-                                <div>
-                                    <p class="font-bold text-lg">🧩 Jigsaw Reading</p>
-                                    <p class="text-sm text-slate-600">Become an "expert" on one piece of a text and teach it to your group.</p>
-                                </div>
-                            </div>
-                             <div class="bg-white p-4 rounded-lg shadow flex items-center">
-                                 <img src="https://storage.googleapis.com/tb-img/production/22/07/Screenshot%202022-07-19%20122959.png" alt="Snowball Discussion" class="w-20 h-20 object-cover rounded-lg mr-4" onerror="this.onerror=null;this.src='https://placehold.co/80x80/cccccc/ffffff?text=Snowball';">
-                                 <div>
-                                     <p class="font-bold text-lg">❄️ Snowball Discussion</p>
-                                     <p class="text-sm text-slate-600">Start with individual ideas, then pair up to build a collective understanding.</p>
-                                 </div>
-                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:col-span-1">
-                        <div class="chart-container !max-w-md">
-                            <canvas id="skillsChart"></canvas>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-1">
-                        <h3 class="text-2xl font-bold text-center mb-4">Our Digital Toolkit</h3>
-                        <div class="grid grid-cols-3 gap-4 text-center">
-                            <img src="https://cdn-1.webcatalog.io/catalog/blooket/blooket-icon-filled-256.webp?v=1714773421957" alt="Blooket Logo" class="w-24 h-24 object-contain rounded-lg mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1E90FF/ffffff?text=Blooket';">
-                            <img src="https://wave-cms-uploads.s3.amazonaws.com/What_is_Gimkit_544e704098.png" alt="Gimkit Logo" class="w-24 h-24 object-contain rounded-lg mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/100x100/32CD32/ffffff?text=Gimkit';">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_JRY69v3Q7PdLfrrsRRWggw7EXkFV3BrcVw&s" alt="Padlet Logo" class="w-24 h-24 object-contain rounded-lg mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/100x100/FF69B4/ffffff?text=Padlet';">
-                            <img src="data:image/png;base64,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" alt="Quizlet Logo" class="w-24 h-24 object-contain rounded-lg mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/100x100/4169E1/ffffff?text=Quizlet';">
-                            <img src="https://mma.prnewswire.com/media/1820262/Miro_Logo.jpg?p=facebook" onerror="this.onerror=null;this.src='https://placehold.co/100x100/FFD700/000000?text=Miro';">
-                            <img src="data:image/png;base64,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" class="w-24 h-24 object-contain rounded-lg mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/100x100/8A2BE2/ffffff?text=Socrative';">
-                            <img src="https://www.elproyectordeclase.com/wp-content/uploads/2021/09/Baamboozle.png';">
-                            <img src="https://placehold.co/100x100/A9A9A9/FFFFFF?text=More!&font=inter" alt="More Apps" class="w-24 h-24 object-contain rounded-lg mx-auto">
-                        </div>
-                        <p class="text-center text-sm text-slate-600 mt-4">We'll use these apps and many more to make learning interactive, creative, and fun!</p>
-                    </div>
-                </div>
+          <article class="platform-card scribo">
+            <div class="platform-media">
+              <img
+                src="assets/scribo-writing.jpg"
+                alt="ScriboWriting platform logo"
+                loading="lazy"
+              >
             </div>
-        </section>
-
-        <!-- Section 5: Our Reading Program -->
-        <section class="mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-10 drop-shadow-md">Our Personalized Reading Program</h2>
-            <div class="content-card max-w-3xl mx-auto p-8 text-center">
-                 <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-                     <img src="https://store-images.s-microsoft.com/image/apps.3754.14122131671437906.1efd4a17-0525-4927-8110-de262293d7ae.7c13ec9a-7fe2-45de-bba2-b0e7c7ca3352" alt="BookrNext Logo" class="h-28 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/200x112/cccccc/ffffff?text=BookrNext';">
-                     <p class="text-lg text-slate-600 md:text-left">To build our reading skills, we will use the dedicated <strong class="font-bold">BookrNext</strong> app. It offers a library of graded readers on fascinating topics, helping you improve comprehension and vocabulary at your own pace.</p>
-                 </div>
+            <div class="platform-copy">
+              <span class="platform-type">Writing development</span>
+              <h3>ScriboWriting</h3>
+              <p>
+                Scribo is our writing platform. We use it to make writing visible
+                as a process: generate ideas, organise, draft, respond to feedback,
+                revise and submit with greater control.
+              </p>
+              <ul class="platform-list">
+                <li>Plan ideas before writing</li>
+                <li>Develop structure, clarity and language control</li>
+                <li>Use feedback to revise rather than simply finish</li>
+              </ul>
             </div>
-        </section>
-        
-        <!-- Section 6: Exam Target -->
-        <section class="mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-10 drop-shadow-md">Our Ultimate Goal</h2>
-            <div class="content-card max-w-3xl mx-auto p-8 text-center">
-                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-                    <img src="https://aesupdate.actonweb7.com/wp-content/uploads/2021/05/B2-first-English-1-300x216.png" alt="B2 First exam Logo" class="h-32 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00008B/ffffff?text=B2+First';">
-                    <p class="text-lg text-slate-600 md:text-left">All the skills we build—critical thinking, analysis, and communication—are designed to help you ace the <strong class="font-bold text-[#073B4C]">B2 First exam</strong> and succeed beyond it.</p>
-                </div>
-            </div>
-            <div class="content-card max-w-6xl mx-auto mt-8 p-8">
-                <img src="https://scontent.fsaw3-1.fna.fbcdn.net/v/t51.75761-15/484965183_18489774715047361_6810050740163848622_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=kVO-RSgZ9F8Q7kNvwF4w9XA&_nc_oc=AdndwBtR0JypQPPOMeR82dhiHrOObqv3jSGXfiB_wp7SZdW9bJ-7zj_tEiJzqqIBq3g&_nc_zt=23&_nc_ht=scontent.fsaw3-1.fna&_nc_gid=xufB91eMV0ukF9trNV2zHA&oh=00_AfVpkjueXEDsKU7oYWtzfFf86rPnfBKpdU8IuIPYO6ObZg&oe=68BCF27D" alt="Cambridge English Scale" class="w-full h-auto object-contain" onerror="this.onerror=null;this.src='https://placehold.co/500x250/cccccc/ffffff?text=Cambridge+Scale';">
-            </div>
-        </section>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    </div>
+    <section class="section" id="target">
+      <div class="toefl-wrap">
+        <div class="toefl-top">
+          <div class="toefl-copy">
+            <span class="section-label">Our ultimate target</span>
+            <h2>TOEFL ITP at the end of the year.</h2>
+            <p>
+              The test is our destination, not the whole journey. Throughout the year,
+              the themes, reading pathways, language work and listening practice build
+              the proficiency students will need to approach TOEFL ITP with confidence.
+            </p>
+          </div>
+          <div class="toefl-logo">
+            <img src="assets/toefl-itp.jpg" alt="TOEFL ITP Test logo" loading="lazy">
+          </div>
+        </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Chart.js Configuration
-            const chartFont = {
-                family: 'Inter',
-                size: 14,
-                weight: '600'
-            };
-            Chart.defaults.font = chartFont;
-            Chart.defaults.color = '#334155'; // slate-700
-            
-            // Palette
-            const chartColors = ['#118AB2', '#06D6A0', '#073B4C', '#EF476F', '#FFD166'];
-            const skillsColors = {
-                backgroundColor: 'rgba(239, 71, 111, 0.2)', // EF476F with alpha
-                borderColor: '#EF476F', // EF476F
-                pointBackgroundColor: '#EF476F',
-            };
+        <div class="toefl-skills">
+          <article class="toefl-skill">
+            <span aria-hidden="true">1</span>
+            <h3>Listening Comprehension</h3>
+            <p>Main ideas, details, speaker purpose and meaning in spoken English.</p>
+          </article>
+          <article class="toefl-skill">
+            <span aria-hidden="true">2</span>
+            <h3>Structure & Written Expression</h3>
+            <p>Grammar, sentence structure and recognition of standard written English.</p>
+          </article>
+          <article class="toefl-skill">
+            <span aria-hidden="true">3</span>
+            <h3>Reading Comprehension</h3>
+            <p>Academic reading, inference, organisation, detail and vocabulary in context.</p>
+          </article>
+        </div>
 
-            // Doughnut Chart Options
-            const doughnutOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '60%',
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            padding: 20,
-                            boxWidth: 15,
-                        }
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.label || '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed !== null) {
-                                    label += context.parsed + '%';
-                                }
-                                return label;
-                            }
-                        }
-                    }
-                }
-            };
-            
-            // Unit 1 Chart
-            const unit1Ctx = document.getElementById('unit1Chart').getContext('2d');
-            new Chart(unit1Ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Reading', 'Speaking', 'Vocabulary', 'Language Use', 'Listening'],
-                    datasets: [{
-                        label: 'Unit 1 Skills Focus',
-                        data: [25, 25, 10, 20, 20],
-                        backgroundColor: chartColors,
-                        borderColor: 'rgba(255, 255, 255, 0.92)',
-                        borderWidth: 4,
-                        hoverOffset: 8
-                    }]
-                },
-                options: doughnutOptions
-            });
+        <p class="toefl-note">
+          Our TOEFL ITP preparation is organised around these three core areas.
+          <a href="https://www.ets.org/toefl/itp/prepare.html" target="_blank" rel="noopener noreferrer">View the official ETS preparation overview</a>.
+          Speaking and extended writing remain important parts of our wider course even though they are not the three core Level 1 sections.
+        </p>
+      </div>
+    </section>
 
-            // Unit 2 Chart
-            const unit2Ctx = document.getElementById('unit2Chart').getContext('2d');
-            new Chart(unit2Ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Reading', 'Speaking', 'Vocabulary', 'Language Use', 'Listening'],
-                    datasets: [{
-                        label: 'Unit 2 Skills Focus',
-                        data: [20, 30, 10, 20, 20],
-                        backgroundColor: chartColors,
-                        borderColor: 'rgba(255, 255, 255, 0.92)',
-                        borderWidth: 4,
-                        hoverOffset: 8
-                    }]
-                },
-                options: doughnutOptions
-            });
+    <section class="section finale">
+      <div class="finale-card">
+        <span class="section-label">Ready?</span>
+        <h2>Curiosity → practice → feedback → confidence.</h2>
+        <p>
+          Return to the mystery images, choose one unit and explain which English
+          skill you think it will challenge most.
+        </p>
+        <a class="button" href="#themes">Return to the theme challenge ↑</a>
+      </div>
+    </section>
+  </main>
 
-            // Skills Radar Chart
-            const skillsCtx = document.getElementById('skillsChart').getContext('2d');
-            new Chart(skillsCtx, {
-                type: 'radar',
-                data: {
-                    labels: ['Collaboration', 'Communication', 'Critical Thinking', 'Creativity', 'Inquiry'],
-                    datasets: [{
-                        label: '21st Century Skills Growth',
-                        data: [4, 5, 4, 3, 5],
-                        backgroundColor: skillsColors.backgroundColor,
-                        borderColor: skillsColors.borderColor,
-                        pointBackgroundColor: skillsColors.pointBackgroundColor,
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: skillsColors.borderColor,
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        r: {
-                            angleLines: {
-                                color: '#d1d5db' // slate-300
-                            },
-                            grid: {
-                                color: '#e5e7eb' // slate-200
-                            },
-                            pointLabels: {
-                                font: {
-                                    size: 14,
-                                    weight: 'bold'
-                                },
-                                color: '#1e293b' // slate-800
-                            },
-                            ticks: {
-                                beginAtZero: true,
-                                max: 5,
-                                stepSize: 1,
-                                backdropColor: 'rgba(255, 255, 255, 0.92)',
-                                color: '#475569' // slate-600
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                         tooltip: {
-                             titleFont: {
-                                 weight: 'bold'
-                             },
-                             bodyFont: {
-                                 size: 14
-                             }
-                         }
-                    }
-                }
-            });
+  <footer>
+    <span class="footer-line">Discover Futures 4 · IS English</span>
+    <span>Eight big questions. A year of purposeful English.</span>
+  </footer>
 
-        });
-    </script>
+  <script>
+    const units = [
+      {
+        number: 1,
+        title: "How is music a part of our lives?",
+        tags: ["emotion", "soundscapes", "technology", "trends"],
+        x: "0%",
+        y: "0%"
+      },
+      {
+        number: 2,
+        title: "What is the value of money?",
+        tags: ["choices", "trade", "wealth", "social impact"],
+        x: "33.333%",
+        y: "0%"
+      },
+      {
+        number: 3,
+        title: "Why do we read?",
+        tags: ["empathy", "visual stories", "thinking", "data"],
+        x: "66.667%",
+        y: "0%"
+      },
+      {
+        number: 4,
+        title: "Why do we compete?",
+        tags: ["performance", "fair play", "teamwork", "ethics"],
+        x: "100%",
+        y: "0%"
+      },
+      {
+        number: 5,
+        title: "How do we remember the past?",
+        tags: ["memory", "history", "biography", "evidence"],
+        x: "0%",
+        y: "100%"
+      },
+      {
+        number: 6,
+        title: "What is special about home?",
+        tags: ["belonging", "architecture", "urban life", "future homes"],
+        x: "33.333%",
+        y: "100%"
+      },
+      {
+        number: 7,
+        title: "Why do colors matter?",
+        tags: ["psychology", "design", "branding", "mood"],
+        x: "66.667%",
+        y: "100%"
+      },
+      {
+        number: 9,
+        title: "Is speed important?",
+        tags: ["technology", "transport", "modern life", "balance"],
+        x: "100%",
+        y: "100%"
+      }
+    ];
+
+    const themeGrid = document.getElementById("themeGrid");
+    const themeStatus = document.getElementById("themeStatus");
+    const resetButton = document.getElementById("resetThemes");
+    const revealButton = document.getElementById("revealThemes");
+    const stages = new Map(units.map((unit) => [unit.number, 0]));
+
+    function tagsMarkup(tags) {
+      return (
+        '<span class="theme-tags">' +
+        tags.map((tag) => '<span class="theme-tag">' + tag + "</span>").join("") +
+        "</span>"
+      );
+    }
+
+    function stageMarkup(unit, stage) {
+      if (stage === 0) {
+        return (
+          '<span class="stage-kicker">Theme hidden</span>' +
+          '<span class="stage-title">What could this unit be about?</span>' +
+          '<span class="stage-text">Look first. Click when your group has an idea.</span>'
+        );
+      }
+
+      if (stage === 1) {
+        return (
+          '<span class="stage-kicker">Discuss before revealing</span>' +
+          '<span class="stage-title">What do you notice?</span>' +
+          '<span class="stage-text">What big question connects these details? What does the image remind you of?</span>'
+        );
+      }
+
+      return (
+        '<span class="stage-kicker">Unit ' + unit.number + "</span>" +
+        '<span class="stage-title">' + unit.title + "</span>" +
+        tagsMarkup(unit.tags)
+      );
+    }
+
+    function accessibleLabel(unit, stage) {
+      if (stage === 0) {
+        return "Hidden course theme. Activate to show discussion prompts.";
+      }
+      if (stage === 1) {
+        return "Discussion prompts shown. Activate again to reveal the unit.";
+      }
+      return "Unit " + unit.number + ": " + unit.title;
+    }
+
+    function renderStatus() {
+      const revealed = [...stages.values()].filter((stage) => stage === 2).length;
+      if (revealed === 0) {
+        themeStatus.textContent = "No unit names revealed yet.";
+      } else if (revealed === units.length) {
+        themeStatus.textContent = "All eight unit names are now revealed.";
+      } else {
+        themeStatus.textContent = revealed + " of " + units.length + " unit names revealed.";
+      }
+    }
+
+    function setCardStage(card, unit, stage) {
+      stages.set(unit.number, stage);
+      card.dataset.stage = String(stage);
+      card.setAttribute("aria-label", accessibleLabel(unit, stage));
+      card.setAttribute("aria-expanded", stage === 2 ? "true" : "false");
+      card.querySelector(".stage-copy").innerHTML = stageMarkup(unit, stage);
+      card.querySelector(".mystery-badge").textContent = stage === 2 ? String(unit.number) : "?";
+      renderStatus();
+    }
+
+    units.forEach((unit) => {
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "theme-card";
+      card.dataset.stage = "0";
+      card.style.setProperty("--bg-x", unit.x);
+      card.style.setProperty("--bg-y", unit.y);
+      card.innerHTML =
+        '<span class="card-stage">' +
+          '<span class="mystery-badge" aria-hidden="true">?</span>' +
+          '<span class="stage-copy">' + stageMarkup(unit, 0) + "</span>" +
+        "</span>";
+      card.setAttribute("aria-label", accessibleLabel(unit, 0));
+      card.setAttribute("aria-expanded", "false");
+      card.addEventListener("click", () => {
+        const current = stages.get(unit.number) || 0;
+        const next = Math.min(current + 1, 2);
+        setCardStage(card, unit, next);
+      });
+      themeGrid.appendChild(card);
+    });
+
+    resetButton.addEventListener("click", () => {
+      document.querySelectorAll(".theme-card").forEach((card, index) => {
+        setCardStage(card, units[index], 0);
+      });
+      document.querySelector(".theme-card").focus();
+    });
+
+    revealButton.addEventListener("click", () => {
+      document.querySelectorAll(".theme-card").forEach((card, index) => {
+        setCardStage(card, units[index], 2);
+      });
+    });
+
+    renderStatus();
+  </script>
 </body>
 </html>
-
