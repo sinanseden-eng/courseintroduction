@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
     name="description"
-    content="Discover Futures 4 course introduction: explore eight big questions, interactive reading activities, language revision games, learning platforms and preparation for TOEFL ITP."
+    content="Discover Futures 4 course introduction: explore eight big questions, interactive reading activities, language revision games, learning platforms, fun independent English practice and preparation for TOEFL ITP."
   >
   <title>Discover Futures 4 | Course Introduction</title>
   <style>
@@ -767,6 +767,21 @@
       background: #edf0f6;
     }
 
+    .reading-feature-wide {
+      grid-column: 1 / -1;
+      grid-template-columns: minmax(300px, 0.72fr) minmax(0, 1.28fr);
+      grid-template-rows: 300px;
+    }
+
+    .reading-feature-wide .showcase-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top: 0;
+      border-left: 1px solid var(--line);
+      padding: 30px;
+    }
+
     .showcase-copy {
       display: block;
       border-top: 1px solid var(--line);
@@ -1014,6 +1029,139 @@
       color: #087b65;
       font-size: 12px;
       font-weight: 950;
+    }
+
+    .fun-learning {
+      margin-top: 76px;
+      border-top: 1px solid var(--line);
+      padding-top: 70px;
+    }
+
+    .fun-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .fun-card {
+      grid-column: span 2;
+      min-width: 0;
+      display: grid;
+      grid-template-rows: 150px minmax(0, 1fr);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: 0 16px 42px rgba(18, 33, 63, 0.1);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .fun-card.featured {
+      grid-column: span 3;
+      grid-template-rows: 230px minmax(0, 1fr);
+    }
+
+    .fun-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 52px rgba(18, 33, 63, 0.16);
+    }
+
+    .fun-media {
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      background: #eaf0f8;
+    }
+
+    .fun-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .fun-visual {
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 75% 20%, rgba(255, 255, 255, 0.25), transparent 7rem),
+        linear-gradient(135deg, var(--indigo), var(--purple));
+      font-size: 3.4rem;
+      font-weight: 950;
+      letter-spacing: -0.06em;
+    }
+
+    .fun-card.lingoclip .fun-visual {
+      background:
+        radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.25), transparent 7rem),
+        linear-gradient(135deg, #ff6b6b, #ff9b42);
+    }
+
+    .fun-card.freerice .fun-visual {
+      background:
+        radial-gradient(circle at 74% 16%, rgba(255, 255, 255, 0.32), transparent 7rem),
+        linear-gradient(135deg, #087b65, var(--mint));
+    }
+
+    .fun-body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-top: 1px solid var(--line);
+      padding: 21px 22px 23px;
+    }
+
+    .fun-type {
+      margin-bottom: 7px;
+      color: var(--indigo);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .fun-card h3 {
+      margin: 0;
+      color: #12213f;
+      font-size: 1.28rem;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .fun-card p {
+      margin: 10px 0 0;
+      color: #596784;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .login-reminder {
+      margin-top: 14px;
+      border-radius: 13px;
+      background: #f1f8df;
+      padding: 10px 12px;
+      color: #405415;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .fun-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: auto;
+      padding-top: 18px;
+      color: var(--indigo);
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .fun-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
 
     .toefl-wrap {
@@ -1264,6 +1412,31 @@
       .showcase-card,
       .games-grid .showcase-card {
         grid-template-rows: 220px auto;
+      }
+
+      .reading-feature-wide {
+        grid-column: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 220px auto;
+      }
+
+      .reading-feature-wide .showcase-copy {
+        border-top: 1px solid var(--line);
+        border-left: 0;
+        padding: 20px 22px 23px;
+      }
+
+      .fun-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .fun-card,
+      .fun-card.featured {
+        grid-column: 1 / -1;
+      }
+
+      .fun-card.featured {
+        grid-template-rows: 210px auto;
       }
 
       .platform-card {
@@ -1615,6 +1788,26 @@
               <p>Use words, illustrations and sound to predict, interpret and discuss.</p>
             </span>
           </button>
+
+          <button
+            class="showcase-card reading-feature-wide"
+            type="button"
+            data-fit="contain"
+            data-title="Folk Tale With a Twist · Reimagined Storytelling"
+            data-caption="Recognise familiar folk-tale patterns, identify what has changed and explain how a new viewpoint can transform a well-known story."
+            data-src="assets/reading-folk-tale-twist.png"
+            aria-haspopup="dialog"
+            aria-label="Open a larger preview of the Folk Tale With a Twist reading activity"
+          >
+            <span class="showcase-image">
+              <img src="assets/reading-folk-tale-twist.png" alt="The Other Side of the Story, a collection of fairy tales with a twist" loading="lazy">
+            </span>
+            <span class="showcase-copy">
+              <span class="showcase-kicker">Perspective & creative response</span>
+              <h3>Folk Tale With a Twist</h3>
+              <p>Revisit familiar tales from an unexpected viewpoint, compare versions and create a convincing twist of your own.</p>
+            </span>
+          </button>
         </div>
       </div>
     </section>
@@ -1820,6 +2013,92 @@
               </ul>
             </div>
           </article>
+        </div>
+
+        <div class="fun-learning" id="fun-english">
+          <div class="section-heading center">
+            <span class="section-label">Beyond the lesson</span>
+            <h2>How to Improve Your English in a Fun Way</h2>
+            <p>
+              Choose something you genuinely enjoy—news, magazines, music or a
+              purposeful quiz—and make English part of your normal week. Short,
+              frequent practice is more useful than one heroic three-hour session
+              followed by a month-long disappearance.
+            </p>
+          </div>
+
+          <div class="fun-grid" aria-label="Fun ways to improve English beyond the lesson">
+            <article class="fun-card featured">
+              <div class="fun-media">
+                <img src="assets/fun-magzter.png" alt="Magzter online magazine and newspaper library" loading="lazy">
+              </div>
+              <div class="fun-body">
+                <span class="fun-type">Online magazine library</span>
+                <h3>Magzter</h3>
+                <p>
+                  Browse English-language magazines and newspapers across many
+                  interests. Start with headlines and short articles, collect useful
+                  expressions, then briefly explain what you discovered.
+                </p>
+                <div class="login-reminder">✉ Check your email for your Magzter username and password before signing in.</div>
+                <a class="fun-link" href="https://www.magzter.com/login/email" target="_blank" rel="noopener noreferrer">Open the Magzter login <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+
+            <article class="fun-card featured">
+              <div class="fun-media">
+                <img src="assets/fun-news-in-levels.png" alt="News in Levels website showing news stories at three English levels" loading="lazy">
+              </div>
+              <div class="fun-body">
+                <span class="fun-type">Levelled current affairs</span>
+                <h3>News in Levels</h3>
+                <p>
+                  Read current stories at Level 1, 2 or 3. Read and listen together,
+                  revisit new words, then summarise the story or discuss its question.
+                </p>
+                <a class="fun-link" href="https://www.newsinlevels.com/" target="_blank" rel="noopener noreferrer">Explore News in Levels <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+
+            <article class="fun-card lyricstraining">
+              <div class="fun-visual" aria-hidden="true">♫</div>
+              <div class="fun-body">
+                <span class="fun-type">Music-based listening</span>
+                <h3>LyricsTraining</h3>
+                <p>
+                  Listen to music videos and complete missing-word activities to
+                  strengthen sound recognition, vocabulary and grammar in context.
+                </p>
+                <a class="fun-link" href="https://lyricstraining.com/" target="_blank" rel="noopener noreferrer">Practise with LyricsTraining <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+
+            <article class="fun-card lingoclip">
+              <div class="fun-visual" aria-hidden="true">▶</div>
+              <div class="fun-body">
+                <span class="fun-type">The app version</span>
+                <h3>LingoClip App</h3>
+                <p>
+                  LingoClip is also known as LyricsTraining. Use its app experience
+                  for short listening sessions and to notice words in connected speech.
+                </p>
+                <a class="fun-link" href="https://lingoclip.app/" target="_blank" rel="noopener noreferrer">Discover LingoClip <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+
+            <article class="fun-card freerice">
+              <div class="fun-visual" aria-hidden="true">🌾</div>
+              <div class="fun-body">
+                <span class="fun-type">Vocabulary with a purpose</span>
+                <h3>Freerice by WFP</h3>
+                <p>
+                  Answer English-vocabulary and general-knowledge questions. Correct
+                  answers generate sponsor-funded support for the UN World Food Programme.
+                </p>
+                <a class="fun-link" href="https://freerice.com/" target="_blank" rel="noopener noreferrer">Play Freerice <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
