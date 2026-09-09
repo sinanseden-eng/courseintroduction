@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
     name="description"
-    content="Discover Futures 4 course introduction: explore eight big questions, differentiated reading with Sensations, writing with ScriboWriting, and preparation for TOEFL ITP."
+    content="Discover Futures 4 course introduction: explore eight big questions, interactive reading activities, language revision games, learning platforms and preparation for TOEFL ITP."
   >
   <title>Discover Futures 4 | Course Introduction</title>
   <style>
@@ -654,6 +654,246 @@
       font-size: 14px;
     }
 
+    .showcase-section {
+      width: 100%;
+      background: var(--white);
+    }
+
+    .showcase-section.games-showcase {
+      color: var(--white);
+      background:
+        radial-gradient(circle at 9% 10%, rgba(61, 169, 252, 0.2), transparent 25rem),
+        radial-gradient(circle at 92% 88%, rgba(255, 155, 66, 0.18), transparent 25rem),
+        var(--navy);
+    }
+
+    .showcase-inner {
+      width: var(--page);
+      margin: 0 auto;
+      padding: 96px 0;
+    }
+
+    .showcase-section .section-heading {
+      margin-bottom: 34px;
+    }
+
+    .games-showcase .section-label {
+      color: #8bdfff;
+    }
+
+    .games-showcase .section-heading h2 {
+      color: var(--white);
+    }
+
+    .games-showcase .section-heading p {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .games-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .showcase-card {
+      width: 100%;
+      min-width: 0;
+      display: grid;
+      grid-template-rows: 250px minmax(0, 1fr);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      padding: 0;
+      color: var(--ink);
+      text-align: left;
+      box-shadow: 0 18px 45px rgba(18, 33, 63, 0.11);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .showcase-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(90, 73, 220, 0.3);
+      box-shadow: 0 26px 56px rgba(18, 33, 63, 0.17);
+    }
+
+    .showcase-image {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: #e9edf6;
+    }
+
+    .showcase-image::after {
+      content: "Open preview ↗";
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      background: rgba(17, 26, 53, 0.82);
+      padding: 7px 10px;
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.03em;
+      backdrop-filter: blur(8px);
+    }
+
+    .showcase-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 320ms ease;
+    }
+
+    .showcase-card:hover .showcase-image img {
+      transform: scale(1.035);
+    }
+
+    .showcase-card[data-fit="contain"] .showcase-image img {
+      object-fit: contain;
+    }
+
+    .showcase-card[data-fit="contain"] .showcase-image {
+      background: #edf0f6;
+    }
+
+    .showcase-copy {
+      display: block;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+      padding: 20px 22px 23px;
+    }
+
+    .showcase-kicker {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--indigo);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .showcase-card h3 {
+      margin: 0;
+      color: #12213f;
+      font-size: 1.18rem;
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+    }
+
+    .showcase-card p {
+      margin: 9px 0 0;
+      color: #596784;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .games-grid .showcase-card {
+      grid-template-rows: 190px minmax(0, 1fr);
+      border-color: rgba(255, 255, 255, 0.14);
+      background: #182341;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+    }
+
+    .games-grid .showcase-card:hover {
+      border-color: rgba(139, 223, 255, 0.46);
+      box-shadow: 0 28px 58px rgba(0, 0, 0, 0.32);
+    }
+
+    .games-grid .showcase-copy {
+      border-top-color: rgba(255, 255, 255, 0.1);
+      background: #182341;
+    }
+
+    .games-grid .showcase-kicker {
+      color: #8bdfff;
+    }
+
+    .games-grid .showcase-card h3 {
+      color: var(--white);
+    }
+
+    .games-grid .showcase-card p {
+      color: rgba(255, 255, 255, 0.69);
+    }
+
+    .activity-dialog {
+      width: min(1040px, calc(100% - 28px));
+      max-height: calc(100vh - 28px);
+      overflow: auto;
+      border: 0;
+      border-radius: 28px;
+      background: #101a34;
+      padding: 0;
+      color: var(--white);
+      box-shadow: 0 35px 100px rgba(0, 0, 0, 0.42);
+    }
+
+    .activity-dialog::backdrop {
+      background: rgba(7, 12, 27, 0.82);
+      backdrop-filter: blur(8px);
+    }
+
+    .dialog-close {
+      position: sticky;
+      z-index: 3;
+      top: 14px;
+      float: right;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      margin: 14px 14px -56px 0;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      background: rgba(17, 26, 53, 0.88);
+      padding: 0;
+      color: var(--white);
+      font-size: 21px;
+      font-weight: 850;
+      backdrop-filter: blur(10px);
+    }
+
+    .dialog-media {
+      min-height: 260px;
+      display: grid;
+      place-items: center;
+      background: #090f22;
+    }
+
+    .dialog-media img {
+      width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+    }
+
+    .dialog-copy {
+      clear: both;
+      padding: 24px 28px 28px;
+    }
+
+    .dialog-copy h3 {
+      margin: 0;
+      font-size: 1.55rem;
+      line-height: 1.2;
+    }
+
+    .dialog-copy p {
+      margin: 8px 0 0;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
     .platform-section {
       width: 100%;
       background: linear-gradient(180deg, rgba(90, 73, 220, 0.06), rgba(67, 198, 172, 0.08));
@@ -663,10 +903,14 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
+      align-items: stretch;
     }
 
     .platform-card {
+      display: grid;
+      grid-template-rows: 270px minmax(0, 1fr);
       overflow: hidden;
+      isolation: isolate;
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
       background: var(--white);
@@ -674,7 +918,11 @@
     }
 
     .platform-media {
-      height: 270px;
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
       display: grid;
       place-items: center;
       background: #f7f8fb;
@@ -686,13 +934,23 @@
     }
 
     .platform-media img {
+      display: block;
       width: 100%;
       height: 100%;
+      max-width: 100%;
+      max-height: 100%;
       object-fit: contain;
+      object-position: center;
     }
 
     .platform-copy {
+      position: relative;
+      z-index: 2;
       padding: 28px;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     .platform-type {
@@ -715,6 +973,7 @@
 
     .platform-copy h3 {
       margin: 0;
+      color: #12213f;
       font-size: 1.85rem;
       line-height: 1.1;
       letter-spacing: -0.04em;
@@ -722,7 +981,7 @@
 
     .platform-copy p {
       margin: 14px 0 0;
-      color: var(--muted);
+      color: #53617a;
     }
 
     .platform-list {
@@ -737,7 +996,7 @@
       display: flex;
       align-items: flex-start;
       gap: 9px;
-      color: #34405a;
+      color: #253552;
       font-size: 14px;
       font-weight: 700;
     }
@@ -924,7 +1183,8 @@
 
       .theme-grid,
       .learning-loop,
-      .connection-grid {
+      .connection-grid,
+      .games-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -974,6 +1234,10 @@
         padding: 72px 0;
       }
 
+      .showcase-inner {
+        padding: 72px 0;
+      }
+
       .activity-shell {
         border-radius: 25px;
         padding: 12px;
@@ -992,12 +1256,22 @@
       }
 
       .platform-grid,
+      .showcase-grid,
       .toefl-skills {
         grid-template-columns: 1fr;
       }
 
-      .platform-media {
-        height: 230px;
+      .showcase-card,
+      .games-grid .showcase-card {
+        grid-template-rows: 220px auto;
+      }
+
+      .platform-card {
+        grid-template-rows: 230px auto;
+      }
+
+      .platform-copy {
+        padding: 24px;
       }
 
       .toefl-top {
@@ -1016,7 +1290,8 @@
     @media (max-width: 500px) {
       .theme-grid,
       .learning-loop,
-      .connection-grid {
+      .connection-grid,
+      .showcase-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1093,6 +1368,7 @@
         <a href="#themes">Theme challenge</a>
         <a href="#connections">Course connections</a>
         <a href="#learning">How we learn</a>
+        <a href="#activities">Activities & games</a>
         <a href="#platforms">Our platforms</a>
         <a href="#target">TOEFL ITP</a>
       </div>
@@ -1248,6 +1524,242 @@
         </article>
       </div>
     </section>
+
+    <section class="showcase-section" id="activities">
+      <div class="showcase-inner">
+        <div class="section-heading">
+          <span class="section-label">Reading in different ways</span>
+          <h2>Different Reading Activities That Help Us Reach Our Goals</h2>
+          <p>
+            Reading will not mean doing the same task every time. We will interpret
+            images, follow branching stories, compare voices, investigate clues and
+            explain how evidence shapes our understanding. Select any card for a closer look.
+          </p>
+        </div>
+
+        <div class="showcase-grid" aria-label="Different reading activities">
+          <button
+            class="showcase-card"
+            type="button"
+            data-title="The Arrival · Graphic Story Exploration"
+            data-caption="Infer narrative, emotion and symbolism from sequential images, then support interpretations with visual evidence."
+            data-src="assets/reading-the-arrival.png"
+            aria-haspopup="dialog"
+            aria-label="Open a larger preview of The Arrival graphic story exploration"
+          >
+            <span class="showcase-image">
+              <img src="assets/reading-the-arrival.png" alt="A monochrome fantasy-city scene from The Arrival graphic story" loading="lazy">
+            </span>
+            <span class="showcase-copy">
+              <span class="showcase-kicker">Visual literacy</span>
+              <h3>The Arrival · Graphic Story Exploration</h3>
+              <p>Infer narrative, emotion and symbolism from sequential images.</p>
+            </span>
+          </button>
+
+          <button
+            class="showcase-card"
+            type="button"
+            data-fit="contain"
+            data-title="The Great Ceramic Chicken Hustle · Choose Your Ending"
+            data-caption="Read closely, weigh evidence, predict consequences and justify a route through an interactive branching story."
+            data-src="assets/reading-ceramic-chicken.png"
+            aria-haspopup="dialog"
+            aria-label="Open a larger preview of The Great Ceramic Chicken Hustle choose-your-ending activity"
+          >
+            <span class="showcase-image">
+              <img src="assets/reading-ceramic-chicken.png" alt="A choose-your-ending page from The Great Ceramic Chicken Hustle" loading="lazy">
+            </span>
+            <span class="showcase-copy">
+              <span class="showcase-kicker">Branching narrative</span>
+              <h3>The Great Ceramic Chicken Hustle · Choose Your Ending</h3>
+              <p>Make choices, predict consequences and defend decisions with evidence.</p>
+            </span>
+          </button>
+
+          <button
+            class="showcase-card"
+            type="button"
+            data-fit="contain"
+            data-title="Comparative Poetry Reading"
+            data-caption="Compare imagery, voice, structure and perspective to explore how writers communicate memory, identity and home."
+            data-src="assets/reading-poetry.png"
+            aria-haspopup="dialog"
+            aria-label="Open a larger preview of the comparative poetry reading activity"
+          >
+            <span class="showcase-image">
+              <img src="assets/reading-poetry.png" alt="Two poems arranged side by side for comparison" loading="lazy">
+            </span>
+            <span class="showcase-copy">
+              <span class="showcase-kicker">Comparative reading</span>
+              <h3>Poetry · Two Voices, Shared Ideas</h3>
+              <p>Notice imagery, voice and structure while comparing perspectives.</p>
+            </span>
+          </button>
+
+          <button
+            class="showcase-card"
+            type="button"
+            data-title="The Silent Forest · Interactive Illustrated Storybook"
+            data-caption="Combine close reading, sound, prediction and discussion while moving through an illustrated digital story."
+            data-src="assets/reading-silent-forest.png"
+            aria-haspopup="dialog"
+            aria-label="Open a larger preview of The Silent Forest interactive illustrated storybook"
+          >
+            <span class="showcase-image">
+              <img src="assets/reading-silent-forest.png" alt="The Silent Forest interactive illustrated storybook interface" loading="lazy">
+            </span>
+            <span class="showcase-copy">
+              <span class="showcase-kicker">Interactive storybook</span>
+              <h3>The Silent Forest · Read, Listen & Investigate</h3>
+              <p>Use words, illustrations and sound to predict, interpret and discuss.</p>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-section games-showcase" id="games">
+      <div class="showcase-inner">
+        <div class="section-heading">
+          <span class="section-label">Practise, retrieve, replay</span>
+          <h2>Vocabulary & Language Revision Games We Will Play</h2>
+          <p>
+            These online and classroom games turn retrieval practice into a shared
+            challenge. We will revisit vocabulary, grammar and speaking language in
+            different formats so that useful English is remembered—and ready when needed.
+          </p>
+        </div>
+
+        <div class="showcase-grid games-grid" aria-label="Vocabulary and language revision games">
+          <button
+            class="showcase-card"
+            type="button"
+            data-title="Murder at Blackwood · Collaborative Mystery"
+            data-caption="Interview characters, compare clues and practise precise question forms while solving a classroom mystery."
+            data-src="assets/game-murder-mystery.png"
+            aria-haspopup="dialog"
+            aria-label="Open a larger preview of the Murder at Blackwood collaborative mystery"
+          >
+            <span class="showcase-image">
+              <img src="assets/game-murder-mystery.png" alt="Murder at Blackwood collaborative mystery game interface" loading="lazy">
+            </span>
+            <span class="showcase-copy">
+              <span class="showcase-kicker">Speaking & inference</span>
+              <h3>Murder at Blackwood</h3>
+              <p>A collaborative mystery built around clues, questions and conclusions.</p>
+            </span>
+          </button>
+
+          <button
+            class="showcase-card"
+            type="button"
+            data-title="The Diamond Heist · Interactive Investigation"
+            data-caption="Test accounts, connect information and use language evidence to identify the strongest explanation."
+            data-src="assets/game-diamond-heist.png"
+            aria-haspopup="dialog"
+            aria-label="Open a larger preview of The Diamond Heist interactive investigation"
+          >
+            <span class="showcase-image">
+              <img src="assets/game-diamond-heist.png" alt="The Diamond Heist interactive investigation interface" loading="lazy">
+            </span>
+            <span class="showcase-copy">
+              <span class="showcase-kicker">Information gap</span>
+              <h3>The Diamond Heist</h3>
+              <p>An investigation game for comparing accounts and defending conclusions.</p>
+            </span>
+          </button>
+
+          <button
+            class="showcase-card"
+            type="button"
+            data-fit="contain"
+            data-title="Gimkit · Live Team Revision"
+            data-caption="Retrieve vocabulary and language repeatedly through varied live game modes and team challenges."
+            data-src="assets/game-gimkit.jpg"
+            aria-haspopup="dialog"
+            aria-label="Open a larger preview of Gimkit live team revision games"
+          >
+            <span class="showcase-image">
+              <img src="assets/game-gimkit.jpg" alt="A selection of colourful Gimkit live game modes" loading="lazy">
+            </span>
+            <span class="showcase-copy">
+              <span class="showcase-kicker">Live online revision</span>
+              <h3>Gimkit Games</h3>
+              <p>Varied game modes for repeated retrieval and collaborative review.</p>
+            </span>
+          </button>
+
+          <button
+            class="showcase-card"
+            type="button"
+            data-title="Blooket · Fast Quiz Games"
+            data-caption="Review target vocabulary and language through colourful, low-stakes quiz games with immediate feedback."
+            data-src="assets/game-blooket.jpg"
+            aria-haspopup="dialog"
+            aria-label="Open a larger preview of Blooket vocabulary quiz games"
+          >
+            <span class="showcase-image">
+              <img src="assets/game-blooket.jpg" alt="Colourful Blooket quiz-game characters" loading="lazy">
+            </span>
+            <span class="showcase-copy">
+              <span class="showcase-kicker">Quick-fire review</span>
+              <h3>Blooket</h3>
+              <p>Colourful quiz games with rapid questions and immediate feedback.</p>
+            </span>
+          </button>
+
+          <button
+            class="showcase-card"
+            type="button"
+            data-title="Music Mogul · Board-Game Revision"
+            data-caption="Answer language challenges while making strategic music-industry choices in a Monopoly-style classroom game."
+            data-src="assets/game-music-mogul.png"
+            aria-haspopup="dialog"
+            aria-label="Open a larger preview of the Music Mogul board-game revision activity"
+          >
+            <span class="showcase-image">
+              <img src="assets/game-music-mogul.png" alt="Music Mogul board-game revision interface" loading="lazy">
+            </span>
+            <span class="showcase-copy">
+              <span class="showcase-kicker">Board-game challenge</span>
+              <h3>Music Mogul</h3>
+              <p>A Monopoly-style language game built around the world of music.</p>
+            </span>
+          </button>
+
+          <button
+            class="showcase-card"
+            type="button"
+            data-title="Property Ladder · Quiz-Show Challenge"
+            data-caption="Apply vocabulary in context and climb the ladder in a Who Wants to Be a Billionaire-style revision challenge."
+            data-src="assets/game-property-ladder.png"
+            aria-haspopup="dialog"
+            aria-label="Open a larger preview of the Property Ladder quiz-show challenge"
+          >
+            <span class="showcase-image">
+              <img src="assets/game-property-ladder.png" alt="Property Ladder vocabulary quiz-show interface" loading="lazy">
+            </span>
+            <span class="showcase-copy">
+              <span class="showcase-kicker">Quiz-show revision</span>
+              <h3>Property Ladder</h3>
+              <p>A high-energy vocabulary challenge with a rising sequence of questions.</p>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="activity-dialog" id="activityPreview" aria-labelledby="previewTitle">
+      <button class="dialog-close" id="previewClose" type="button" aria-label="Close preview">×</button>
+      <div class="dialog-media">
+        <img id="previewImage" alt="">
+      </div>
+      <div class="dialog-copy">
+        <h3 id="previewTitle"></h3>
+        <p id="previewCaption"></p>
+      </div>
+    </dialog>
 
     <section class="platform-section" id="platforms">
       <div class="section">
@@ -1547,6 +2059,46 @@
           panel.hidden = panel.id !== tab.getAttribute("aria-controls");
         });
       });
+    });
+
+    const previewDialog = document.getElementById("activityPreview");
+    const previewImage = document.getElementById("previewImage");
+    const previewTitle = document.getElementById("previewTitle");
+    const previewCaption = document.getElementById("previewCaption");
+    const previewClose = document.getElementById("previewClose");
+    let lastPreviewTrigger = null;
+
+    document.querySelectorAll(".showcase-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        lastPreviewTrigger = card;
+        previewImage.src = card.dataset.src;
+        previewImage.alt = card.querySelector("img").alt;
+        previewTitle.textContent = card.dataset.title;
+        previewCaption.textContent = card.dataset.caption;
+
+        if (typeof previewDialog.showModal === "function") {
+          previewDialog.showModal();
+        } else {
+          previewDialog.setAttribute("open", "");
+        }
+      });
+    });
+
+    function closePreview() {
+      if (typeof previewDialog.close === "function") {
+        previewDialog.close();
+      } else {
+        previewDialog.removeAttribute("open");
+      }
+    }
+
+    previewClose.addEventListener("click", closePreview);
+    previewDialog.addEventListener("click", (event) => {
+      if (event.target === previewDialog) closePreview();
+    });
+    previewDialog.addEventListener("close", () => {
+      previewImage.removeAttribute("src");
+      if (lastPreviewTrigger) lastPreviewTrigger.focus();
     });
 
     renderStatus();
