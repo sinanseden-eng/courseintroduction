@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
     name="description"
-    content="Discover Futures 4 course introduction: explore eight big questions, interactive reading activities, language revision games, learning platforms, fun independent English practice and preparation for TOEFL ITP."
+    content="Discover Futures 4 course introduction: explore eight big questions, interactive reading activities, structured discussion routines, language revision games, learning platforms, fun independent English practice and preparation for TOEFL ITP."
   >
   <title>Discover Futures 4 | Course Introduction</title>
   <style>
@@ -909,6 +909,153 @@
       color: rgba(255, 255, 255, 0.72);
     }
 
+    .discussion-section {
+      width: 100%;
+      background:
+        radial-gradient(circle at 8% 14%, rgba(61, 169, 252, 0.13), transparent 24rem),
+        radial-gradient(circle at 92% 86%, rgba(140, 82, 232, 0.11), transparent 25rem),
+        #f2f6fc;
+    }
+
+    .discussion-inner {
+      width: var(--page);
+      margin: 0 auto;
+      padding: 96px 0;
+    }
+
+    .discussion-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .discussion-card {
+      --discussion-accent: #5a49dc;
+      --discussion-soft: #eeeaff;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--white);
+      box-shadow: 0 15px 38px rgba(18, 33, 63, 0.09);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .discussion-card:nth-child(2) { --discussion-accent: #e67e22; --discussion-soft: #fff1df; }
+    .discussion-card:nth-child(3) { --discussion-accent: #07866d; --discussion-soft: #e3f8f2; }
+    .discussion-card:nth-child(4) { --discussion-accent: #e74f68; --discussion-soft: #ffedf1; }
+    .discussion-card:nth-child(5) { --discussion-accent: #237fc1; --discussion-soft: #e5f3fc; }
+    .discussion-card:nth-child(6) { --discussion-accent: #7a45cf; --discussion-soft: #f1e9ff; }
+    .discussion-card:nth-child(7) { --discussion-accent: #b77900; --discussion-soft: #fff3cc; }
+    .discussion-card:nth-child(8) { --discussion-accent: #087b65; --discussion-soft: #e5faf4; }
+
+    .discussion-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 23px 48px rgba(18, 33, 63, 0.14);
+    }
+
+    .discussion-visual {
+      height: 150px;
+      display: grid;
+      place-items: center;
+      border-bottom: 1px solid var(--line);
+      background: var(--discussion-soft);
+      padding: 14px;
+    }
+
+    .discussion-visual svg {
+      width: 100%;
+      height: 100%;
+      max-width: 250px;
+      overflow: visible;
+    }
+
+    .diagram-node {
+      fill: #fff;
+      stroke: var(--discussion-accent);
+      stroke-width: 3;
+    }
+
+    .diagram-accent {
+      fill: var(--discussion-accent);
+    }
+
+    .diagram-soft {
+      fill: var(--discussion-soft);
+      stroke: var(--discussion-accent);
+      stroke-width: 2;
+    }
+
+    .diagram-line {
+      fill: none;
+      stroke: var(--discussion-accent);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .diagram-dash {
+      stroke-dasharray: 6 6;
+    }
+
+    .diagram-label {
+      fill: #12213f;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 10px;
+      font-weight: 900;
+      text-anchor: middle;
+    }
+
+    .diagram-label-light {
+      fill: #fff;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 10px;
+      font-weight: 950;
+      text-anchor: middle;
+    }
+
+    .discussion-copy {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .discussion-type {
+      color: var(--discussion-accent);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .discussion-card h3 {
+      margin: 7px 0 0;
+      color: #12213f;
+      font-size: 1.14rem;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+    }
+
+    .discussion-card p {
+      margin: 9px 0 0;
+      color: #596784;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .discussion-flow {
+      margin-top: auto;
+      padding-top: 16px;
+      color: var(--discussion-accent);
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
     .platform-section {
       width: 100%;
       background: linear-gradient(180deg, rgba(90, 73, 220, 0.06), rgba(67, 198, 172, 0.08));
@@ -1332,6 +1479,7 @@
       .theme-grid,
       .learning-loop,
       .connection-grid,
+      .discussion-grid,
       .games-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1383,6 +1531,10 @@
       }
 
       .showcase-inner {
+        padding: 72px 0;
+      }
+
+      .discussion-inner {
         padding: 72px 0;
       }
 
@@ -1464,6 +1616,7 @@
       .theme-grid,
       .learning-loop,
       .connection-grid,
+      .discussion-grid,
       .showcase-grid {
         grid-template-columns: 1fr;
       }
@@ -1541,7 +1694,7 @@
         <a href="#themes">Theme challenge</a>
         <a href="#connections">Course connections</a>
         <a href="#learning">How we learn</a>
-        <a href="#activities">Activities & games</a>
+        <a href="#activities">Learning activities</a>
         <a href="#platforms">Our platforms</a>
         <a href="#target">TOEFL ITP</a>
       </div>
@@ -1808,6 +1961,214 @@
               <p>Revisit familiar tales from an unexpected viewpoint, compare versions and create a convincing twist of your own.</p>
             </span>
           </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="discussion-section" id="discussion">
+      <div class="discussion-inner">
+        <div class="section-heading center">
+          <span class="section-label">Purposeful classroom talk</span>
+          <h2>Discussion Types We Will Use</h2>
+          <p>
+            Different questions need different ways of talking. These routines make
+            space for thinking, careful listening, questioning, collaboration and
+            evidence-based speaking—so discussion is shared rather than dominated by
+            the three people whose hands live permanently in the air.
+          </p>
+        </div>
+
+        <div class="discussion-grid" aria-label="Eight classroom discussion techniques">
+          <article class="discussion-card">
+            <div class="discussion-visual" aria-hidden="true">
+              <svg viewBox="0 0 240 120">
+                <path class="diagram-line diagram-dash" d="M120 24 L48 91 L192 91 Z"/>
+                <circle class="diagram-node" cx="120" cy="24" r="20"/>
+                <circle class="diagram-node" cx="48" cy="91" r="20"/>
+                <circle class="diagram-node" cx="192" cy="91" r="20"/>
+                <text class="diagram-label" x="120" y="28">TALK</text>
+                <text class="diagram-label" x="48" y="95">ASK</text>
+                <text class="diagram-label" x="192" y="95">NOTE</text>
+                <path class="diagram-line" d="M80 25 C73 12 91 5 101 12"/>
+                <path class="diagram-accent" d="M99 7 L109 13 L98 18 Z"/>
+              </svg>
+            </div>
+            <div class="discussion-copy">
+              <span class="discussion-type">Three rotating roles</span>
+              <h3>Listening Triad</h3>
+              <p>One student explains, one asks for detail and one records the key ideas. The roles rotate.</p>
+              <span class="discussion-flow">Talker → Questioner → Recorder</span>
+            </div>
+          </article>
+
+          <article class="discussion-card">
+            <div class="discussion-visual" aria-hidden="true">
+              <svg viewBox="0 0 240 120">
+                <text class="diagram-label" x="41" y="15">HOME</text>
+                <rect class="diagram-soft" x="15" y="26" width="23" height="23" rx="5"/>
+                <rect class="diagram-soft" x="44" y="26" width="23" height="23" rx="5"/>
+                <rect class="diagram-soft" x="15" y="55" width="23" height="23" rx="5"/>
+                <rect class="diagram-soft" x="44" y="55" width="23" height="23" rx="5"/>
+                <path class="diagram-line" d="M77 52 H104"/>
+                <path class="diagram-accent" d="M103 45 L115 52 L103 59 Z"/>
+                <text class="diagram-label" x="142" y="15">EXPERTS</text>
+                <circle class="diagram-node" cx="125" cy="40" r="14"/>
+                <circle class="diagram-node" cx="159" cy="40" r="14"/>
+                <circle class="diagram-node" cx="125" cy="73" r="14"/>
+                <circle class="diagram-node" cx="159" cy="73" r="14"/>
+                <path class="diagram-line" d="M176 56 H202"/>
+                <path class="diagram-accent" d="M201 49 L214 56 L201 63 Z"/>
+                <rect class="diagram-accent" x="207" y="27" width="27" height="58" rx="8"/>
+                <text class="diagram-label-light" x="220.5" y="51">TEACH</text>
+                <text class="diagram-label-light" x="220.5" y="65">BACK</text>
+              </svg>
+            </div>
+            <div class="discussion-copy">
+              <span class="discussion-type">Shared expertise</span>
+              <h3>Jigsawing</h3>
+              <p>Home-group members study different parts in expert groups, then return and teach one another.</p>
+              <span class="discussion-flow">Home group → Expert group → Teach back</span>
+            </div>
+          </article>
+
+          <article class="discussion-card">
+            <div class="discussion-visual" aria-hidden="true">
+              <svg viewBox="0 0 240 120">
+                <circle class="diagram-node" cx="28" cy="53" r="17"/>
+                <text class="diagram-label" x="28" y="57">1</text>
+                <path class="diagram-line" d="M50 53 H76"/>
+                <path class="diagram-accent" d="M75 46 L87 53 L75 60 Z"/>
+                <circle class="diagram-node" cx="105" cy="43" r="15"/>
+                <circle class="diagram-node" cx="126" cy="65" r="15"/>
+                <path class="diagram-line" d="M147 53 H170"/>
+                <path class="diagram-accent" d="M169 46 L181 53 L169 60 Z"/>
+                <circle class="diagram-node" cx="194" cy="35" r="12"/>
+                <circle class="diagram-node" cx="217" cy="35" r="12"/>
+                <circle class="diagram-node" cx="194" cy="68" r="12"/>
+                <circle class="diagram-node" cx="217" cy="68" r="12"/>
+                <text class="diagram-label" x="28" y="98">THINK</text>
+                <text class="diagram-label" x="116" y="98">PAIR</text>
+                <text class="diagram-label" x="205" y="98">SHARE</text>
+              </svg>
+            </div>
+            <div class="discussion-copy">
+              <span class="discussion-type">From private to public</span>
+              <h3>Think-Pair-Share</h3>
+              <p>Think independently, test the idea with a partner and then contribute a refined answer to the class.</p>
+              <span class="discussion-flow">Think → Pair → Share</span>
+            </div>
+          </article>
+
+          <article class="discussion-card">
+            <div class="discussion-visual" aria-hidden="true">
+              <svg viewBox="0 0 240 120">
+                <circle class="diagram-accent" cx="120" cy="28" r="15"/>
+                <path class="diagram-line" d="M98 79 V58 Q98 47 109 47 H131 Q142 47 142 58 V79"/>
+                <path class="diagram-line" d="M93 80 H147 M102 80 V98 M138 80 V98"/>
+                <circle class="diagram-node" cx="40" cy="91" r="13"/>
+                <circle class="diagram-node" cx="75" cy="101" r="13"/>
+                <circle class="diagram-node" cx="165" cy="101" r="13"/>
+                <circle class="diagram-node" cx="200" cy="91" r="13"/>
+                <text class="diagram-label" x="40" y="42">?</text>
+                <text class="diagram-label" x="200" y="42">?</text>
+                <path class="diagram-line diagram-dash" d="M48 52 Q78 35 100 35 M192 52 Q162 35 140 35"/>
+              </svg>
+            </div>
+            <div class="discussion-copy">
+              <span class="discussion-type">Character questioning</span>
+              <h3>Hot Seating</h3>
+              <p>One student adopts a viewpoint or character while classmates ask probing questions from the audience.</p>
+              <span class="discussion-flow">Take a role → Face questions → Justify answers</span>
+            </div>
+          </article>
+
+          <article class="discussion-card">
+            <div class="discussion-visual" aria-hidden="true">
+              <svg viewBox="0 0 240 120">
+                <circle class="diagram-node" cx="28" cy="34" r="14"/><text class="diagram-label" x="28" y="38">A</text>
+                <circle class="diagram-node" cx="76" cy="34" r="14"/><text class="diagram-label" x="76" y="38">B</text>
+                <circle class="diagram-node" cx="164" cy="34" r="14"/><text class="diagram-label" x="164" y="38">C</text>
+                <circle class="diagram-node" cx="212" cy="34" r="14"/><text class="diagram-label" x="212" y="38">D</text>
+                <path class="diagram-line" d="M46 26 H58 M58 42 H46 M182 26 H194 M194 42 H182"/>
+                <path class="diagram-accent" d="M56 21 L65 26 L56 31 Z M48 37 L39 42 L48 47 Z M192 21 L201 26 L192 31 Z M184 37 L175 42 L184 47 Z"/>
+                <path class="diagram-line" d="M54 59 V73 H186 V59"/>
+                <path class="diagram-accent" d="M120 91 L112 78 H128 Z"/>
+                <rect class="diagram-soft" x="72" y="88" width="96" height="25" rx="12"/>
+                <text class="diagram-label" x="120" y="104">SHARE PARTNERS</text>
+              </svg>
+            </div>
+            <div class="discussion-copy">
+              <span class="discussion-type">Interview and report</span>
+              <h3>Three-Step Interview</h3>
+              <p>Partners interview each other, swap roles and then report their partner’s thinking to the group.</p>
+              <span class="discussion-flow">Interview → Reverse roles → Report</span>
+            </div>
+          </article>
+
+          <article class="discussion-card">
+            <div class="discussion-visual" aria-hidden="true">
+              <svg viewBox="0 0 240 120">
+                <circle class="diagram-node" cx="28" cy="38" r="12"/>
+                <circle class="diagram-node" cx="54" cy="61" r="12"/>
+                <circle class="diagram-node" cx="28" cy="84" r="12"/>
+                <circle class="diagram-node" cx="212" cy="38" r="12"/>
+                <circle class="diagram-node" cx="186" cy="61" r="12"/>
+                <circle class="diagram-node" cx="212" cy="84" r="12"/>
+                <rect class="diagram-accent" x="104" y="48" width="32" height="48" rx="5"/>
+                <path class="diagram-line" d="M120 48 V28 M108 28 H132"/>
+                <path class="diagram-line diagram-dash" d="M69 61 H96 M171 61 H144"/>
+                <path class="diagram-accent" d="M94 54 L104 61 L94 68 Z M146 54 L136 61 L146 68 Z"/>
+                <text class="diagram-label" x="41" y="111">TEAM A</text>
+                <text class="diagram-label" x="199" y="111">TEAM B</text>
+              </svg>
+            </div>
+            <div class="discussion-copy">
+              <span class="discussion-type">Reasoned disagreement</span>
+              <h3>Class Debate</h3>
+              <p>Teams prepare positions, present evidence, question ideas and respond before reaching a considered conclusion.</p>
+              <span class="discussion-flow">Prepare → Present → Challenge → Conclude</span>
+            </div>
+          </article>
+
+          <article class="discussion-card">
+            <div class="discussion-visual" aria-hidden="true">
+              <svg viewBox="0 0 240 120">
+                <rect class="diagram-soft" x="18" y="21" width="64" height="58" rx="6"/>
+                <rect class="diagram-soft" x="88" y="39" width="64" height="58" rx="6"/>
+                <rect class="diagram-soft" x="158" y="21" width="64" height="58" rx="6"/>
+                <path class="diagram-line" d="M31 39 H68 M31 51 H62 M101 58 H139 M101 70 H132 M171 39 H208 M171 51 H202"/>
+                <path class="diagram-line diagram-dash" d="M50 88 Q83 111 111 99 M130 99 Q160 111 190 88"/>
+                <path class="diagram-accent" d="M107 94 L119 101 L106 106 Z M186 83 L198 88 L186 95 Z"/>
+              </svg>
+            </div>
+            <div class="discussion-copy">
+              <span class="discussion-type">Written conversation</span>
+              <h3>Post-it Dialogues</h3>
+              <p>Write a response, read other notes and add a question or connection before discussing the emerging patterns.</p>
+              <span class="discussion-flow">Write → Read → Respond → Discuss</span>
+            </div>
+          </article>
+
+          <article class="discussion-card">
+            <div class="discussion-visual" aria-hidden="true">
+              <svg viewBox="0 0 240 120">
+                <circle class="diagram-accent" cx="58" cy="51" r="16"/>
+                <path class="diagram-line" d="M38 97 Q38 72 58 72 Q78 72 78 97"/>
+                <circle class="diagram-accent" cx="182" cy="51" r="16"/>
+                <path class="diagram-line" d="M162 97 Q162 72 182 72 Q202 72 202 97"/>
+                <path class="diagram-soft" d="M28 18 H82 Q91 18 91 27 V38 Q91 47 82 47 H48 L37 57 V47 H28 Q19 47 19 38 V27 Q19 18 28 18 Z"/>
+                <path class="diagram-soft" d="M158 18 H212 Q221 18 221 27 V38 Q221 47 212 47 H203 V57 L192 47 H158 Q149 47 149 38 V27 Q149 18 158 18 Z"/>
+                <path class="diagram-line" d="M91 82 H145"/>
+                <path class="diagram-accent" d="M105 74 L91 82 L105 90 Z M131 74 L145 82 L131 90 Z"/>
+              </svg>
+            </div>
+            <div class="discussion-copy">
+              <span class="discussion-type">Everyone gets airtime</span>
+              <h3>Pair Talk</h3>
+              <p>Student A speaks while B listens and responds; then roles swap and the pair forms one shared answer.</p>
+              <span class="discussion-flow">A speaks → B responds → Swap → Agree</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
