@@ -2252,6 +2252,7 @@
 
     .discussion-card.is-expanded {
       grid-column: span 2;
+      display: grid;
       grid-template-columns: minmax(210px, .8fr) minmax(0, 1.2fr);
       align-items: stretch;
       border-color: var(--discussion-accent);
@@ -2275,6 +2276,14 @@
     #platforms.course-view > .section {
       padding-top: 48px;
       padding-bottom: 72px;
+    }
+
+    #platforms.course-view {
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(61, 169, 252, 0.14), transparent 25rem),
+        radial-gradient(circle at 94% 18%, rgba(90, 73, 220, 0.12), transparent 28rem),
+        #f7f8fc;
     }
 
     #platforms[data-mode="platforms"] .fun-learning {
