@@ -3659,11 +3659,7 @@
         nextPanel.scrollTop = 0;
       };
 
-      if (document.startViewTransition && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        document.startViewTransition(swapView);
-      } else {
-        swapView();
-      }
+      swapView();
     }
 
     function navigateTo(view, replace = false) {
