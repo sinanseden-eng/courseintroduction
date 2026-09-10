@@ -1641,6 +1641,761 @@
       }
     }
 
+    /* Interactive Course Hub */
+    .course-app {
+      height: 100dvh;
+      overflow: hidden;
+      color: var(--ink);
+      background: #07152f;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .course-app h1,
+    .course-app h2,
+    .course-app h3,
+    .course-app h4,
+    .course-app p,
+    .course-app button,
+    .course-app a,
+    .course-app span {
+      font-family: inherit;
+    }
+
+    .course-app .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      height: 72px;
+      z-index: 80;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(7, 21, 47, 0.94);
+      backdrop-filter: blur(18px);
+    }
+
+    .course-app .nav {
+      width: min(1440px, calc(100% - 48px));
+      min-height: 72px;
+      color: #fff;
+    }
+
+    .course-app .brand {
+      flex: 0 0 auto;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      color: #f8f4ec;
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      font-style: normal;
+      font-weight: 950;
+      letter-spacing: -0.035em;
+    }
+
+    .course-app .brand em {
+      color: #ff7768;
+      font-style: normal;
+    }
+
+    .nav-route {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-right: auto;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .course-app[data-current-view="home"] .nav-route {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .course-hub-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      background: transparent;
+      padding: 8px 0;
+      color: #8bdfff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .course-hub-button:hover {
+      color: #fff;
+    }
+
+    .route-divider {
+      width: 1px;
+      height: 26px;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .route-title {
+      overflow: hidden;
+      max-width: 230px;
+      color: rgba(255, 255, 255, 0.72);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .view-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+    }
+
+    .view-controls button {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      font-weight: 950;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .view-controls button:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .course-app main {
+      height: 100dvh;
+    }
+
+    .course-view {
+      position: fixed;
+      inset: 72px 0 0;
+      z-index: 1;
+      display: none;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-color: rgba(90, 73, 220, 0.45) transparent;
+      scrollbar-width: thin;
+    }
+
+    .course-view.is-active {
+      display: block;
+      animation: course-view-in 420ms cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    @keyframes course-view-in {
+      from { opacity: 0; transform: translateY(14px) scale(.995); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .course-view.section {
+      width: 100%;
+      margin: 0;
+      padding: 48px 0 76px;
+      background:
+        radial-gradient(circle at 7% 4%, rgba(255, 155, 66, 0.13), transparent 22rem),
+        radial-gradient(circle at 94% 16%, rgba(90, 73, 220, 0.12), transparent 28rem),
+        #f7f8fc;
+    }
+
+    .course-view.section > .section-heading,
+    .course-view.section > .activity-shell,
+    .course-view.section > .toefl-wrap {
+      width: var(--page);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .course-view .section-heading {
+      max-width: 880px;
+      margin-bottom: 26px;
+    }
+
+    .course-view .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+    }
+
+    .course-view .section-heading p {
+      margin-top: 12px;
+    }
+
+    .course-view .showcase-inner,
+    .course-view .discussion-inner,
+    .course-view .connections-inner {
+      padding-top: 48px;
+      padding-bottom: 72px;
+    }
+
+    .course-app .supporting-section,
+    .course-app > footer {
+      display: none;
+    }
+
+    /* Welcome animation */
+    .welcome-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 46%, rgba(61, 169, 252, 0.2), transparent 25rem),
+        radial-gradient(circle at 72% 22%, rgba(255, 107, 107, 0.17), transparent 20rem),
+        linear-gradient(135deg, #050f25, #101f4a 58%, #251d68);
+      color: #fff;
+      transition: opacity 520ms ease, visibility 520ms ease;
+    }
+
+    .welcome-screen.is-finished {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .welcome-copy {
+      position: relative;
+      z-index: 2;
+      width: min(1120px, calc(100% - 36px));
+      text-align: center;
+    }
+
+    .welcome-copy > p:first-child {
+      margin: 0 0 18px;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: welcome-rise 700ms 120ms both;
+    }
+
+    .welcome-copy h1 {
+      margin: 0;
+      color: #f8f4ec;
+      font-size: clamp(4rem, 11vw, 10.5rem);
+      font-weight: 950;
+      line-height: 0.84;
+      letter-spacing: -0.075em;
+      text-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+      animation: welcome-title 900ms cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    .welcome-copy h1 span {
+      color: #ff7768;
+    }
+
+    .welcome-line {
+      width: min(360px, 48vw);
+      height: 4px;
+      margin: 30px auto 20px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, #ff7768, #8bdfff, transparent);
+      animation: welcome-line 900ms 420ms both;
+    }
+
+    .welcome-tagline {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      animation: welcome-rise 700ms 520ms both;
+    }
+
+    .welcome-enter {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 18px;
+      color: #fff;
+      font-weight: 850;
+      backdrop-filter: blur(10px);
+      animation: welcome-rise 700ms 650ms both;
+    }
+
+    .welcome-enter:hover {
+      background: #fff;
+      color: #101f4a;
+    }
+
+    .welcome-orbit {
+      position: absolute;
+      border: 1px solid rgba(139, 223, 255, 0.28);
+      border-radius: 50%;
+      transform: rotate(-12deg);
+      animation: orbit-float 8s ease-in-out infinite alternate;
+    }
+
+    .orbit-one { width: 72vw; height: 28vw; }
+    .orbit-two { width: 92vw; height: 40vw; border-color: rgba(255, 119, 104, 0.18); animation-delay: -3s; }
+
+    @keyframes welcome-title {
+      from { opacity: 0; transform: translateY(35px) scale(.9); filter: blur(8px); }
+      to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    @keyframes welcome-rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes welcome-line {
+      from { opacity: 0; transform: scaleX(0); }
+      to { opacity: 1; transform: scaleX(1); }
+    }
+
+    @keyframes orbit-float {
+      from { transform: rotate(-12deg) scale(.98); }
+      to { transform: rotate(-8deg) scale(1.04); }
+    }
+
+    /* Hub */
+    .hero.course-view {
+      min-height: 0;
+      color: #fff;
+      background:
+        linear-gradient(112deg, rgba(5, 15, 37, 0.97), rgba(17, 31, 73, 0.92) 56%, rgba(49, 37, 126, 0.88)),
+        url("assets/discover-futures-themes.webp") center / cover;
+    }
+
+    .hero.course-view::before {
+      width: 42vw;
+      height: 42vw;
+      right: -18vw;
+      top: -26vw;
+      background: rgba(255, 155, 66, 0.16);
+      filter: blur(18px);
+    }
+
+    .hero.course-view::after {
+      width: 34vw;
+      height: 34vw;
+      left: -18vw;
+      bottom: -25vw;
+      background: rgba(61, 169, 252, 0.16);
+      filter: blur(18px);
+    }
+
+    .hub-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1240px, calc(100% - 48px));
+      min-height: 100%;
+      margin: 0 auto;
+      padding: clamp(24px, 4vh, 48px) 0 30px;
+    }
+
+    .hub-heading {
+      text-align: center;
+    }
+
+    .hub-heading .eyebrow {
+      margin-bottom: 12px;
+      padding: 5px 10px;
+      font-size: 11px;
+    }
+
+    .hub-heading h1 {
+      max-width: none;
+      margin: 0;
+      color: #f8f4ec;
+      font-size: clamp(3.2rem, 7.4vw, 6.9rem);
+      font-weight: 950;
+      line-height: 0.88;
+      letter-spacing: -0.07em;
+    }
+
+    .hub-heading h1 span {
+      color: #ff7768;
+    }
+
+    .hub-heading > p:last-child {
+      margin: 17px 0 0;
+      color: rgba(255, 255, 255, 0.67);
+      font-size: clamp(.88rem, 1.4vw, 1.05rem);
+    }
+
+    .hub-grid {
+      max-width: 1120px;
+      margin: clamp(22px, 3.6vh, 36px) auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .hub-tile {
+      --tile-a: #ff7768;
+      --tile-b: #ff9b42;
+      position: relative;
+      min-width: 0;
+      min-height: clamp(132px, 18vh, 178px);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      border: 1px solid rgba(255, 255, 255, 0.23);
+      border-radius: 24px;
+      background: linear-gradient(145deg, var(--tile-a), var(--tile-b));
+      padding: 20px;
+      color: #fff;
+      text-align: left;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.2);
+      isolation: isolate;
+      transition: transform 220ms cubic-bezier(.2, .8, .2, 1), box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .hub-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-position: center;
+      background-size: cover;
+      opacity: .55;
+      transition: transform 500ms ease, opacity 220ms ease;
+    }
+
+    .hub-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(5, 15, 37, 0.04), rgba(5, 15, 37, 0.86));
+    }
+
+    .hub-tile:hover,
+    .hub-tile:focus-visible {
+      transform: translateY(-6px) scale(1.015);
+      border-color: rgba(255, 255, 255, 0.55);
+      box-shadow: 0 26px 58px rgba(0, 0, 0, 0.29);
+    }
+
+    .hub-tile:hover::before { transform: scale(1.06); opacity: .72; }
+    .tile-themes::before { background-image: url("assets/discover-futures-themes.webp"); }
+    .tile-reading::before { background-image: url("assets/reading-the-arrival.png"); }
+    .tile-games::before { background-image: url("assets/game-gimkit.jpg"); }
+    .tile-platforms::before { background-image: url("assets/sensations-english.png"); background-color: #dff2fa; background-size: contain; background-repeat: no-repeat; }
+    .tile-fun::before { background-image: url("assets/fun-magzter.png"); }
+    .tile-toefl::before { background-image: url("assets/toefl-itp.jpg"); background-color: #fff; background-size: contain; background-repeat: no-repeat; }
+    .tile-connections { --tile-a: #234ca6; --tile-b: #5a49dc; }
+    .tile-discussion { --tile-a: #ff9b42; --tile-b: #f06476; }
+
+    .hub-icon {
+      position: absolute;
+      top: 16px;
+      left: 17px;
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 13px;
+      background: rgba(6, 17, 42, 0.35);
+      font-size: 21px;
+      font-weight: 950;
+      backdrop-filter: blur(10px);
+    }
+
+    .hub-label {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 3px;
+      padding-right: 34px;
+    }
+
+    .hub-label strong {
+      font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .hub-label small {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .hub-arrow {
+      position: absolute;
+      right: 16px;
+      bottom: 17px;
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      font-weight: 950;
+    }
+
+    .hub-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .hub-footer i {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #ff7768;
+    }
+
+    /* Existing content, presented as focused views */
+    .course-view .activity-shell {
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .course-view .theme-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .course-view .theme-card {
+      aspect-ratio: 1.1;
+    }
+
+    .course-view .connection-grid,
+    .course-view .discussion-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .course-view .connection-panel {
+      padding: 22px;
+    }
+
+    .course-view .course-lane {
+      min-height: 178px;
+    }
+
+    .method-drawer {
+      margin-top: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.07);
+      overflow: hidden;
+    }
+
+    .method-drawer summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 20px;
+      color: rgba(255, 255, 255, 0.76);
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .method-drawer summary::-webkit-details-marker { display: none; }
+    .method-drawer summary strong { color: #ffd166; }
+    .method-drawer summary > span:last-child { font-size: 1.35rem; transition: transform 180ms ease; }
+    .method-drawer[open] summary > span:last-child { transform: rotate(45deg); }
+
+    .method-drawer .learning-loop {
+      padding: 0 16px 16px;
+    }
+
+    .method-drawer .loop-card {
+      min-height: 185px;
+      padding: 18px;
+    }
+
+    .method-drawer .loop-card h3 { margin-top: 14px; }
+
+    .course-view .showcase-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .course-view .showcase-card,
+    .course-view .games-grid .showcase-card {
+      grid-template-rows: 205px minmax(0, 1fr);
+    }
+
+    .course-view .reading-feature-wide {
+      grid-column: span 2;
+      grid-template-columns: minmax(240px, .8fr) minmax(0, 1.2fr);
+      grid-template-rows: 250px;
+    }
+
+    .discussion-card {
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, grid-column 180ms ease;
+    }
+
+    .discussion-card.is-expanded {
+      grid-column: span 2;
+      grid-template-columns: minmax(210px, .8fr) minmax(0, 1.2fr);
+      align-items: stretch;
+      border-color: var(--discussion-accent);
+      box-shadow: 0 24px 58px rgba(18, 33, 63, 0.17);
+    }
+
+    .discussion-card.is-expanded .discussion-visual {
+      min-height: 100%;
+      border-bottom: 0;
+      border-right: 1px solid rgba(18, 33, 63, 0.1);
+    }
+
+    .discussion-card.is-expanded .discussion-copy {
+      padding: 22px;
+    }
+
+    .discussion-card.is-expanded h3 {
+      font-size: 1.55rem;
+    }
+
+    #platforms.course-view > .section {
+      padding-top: 48px;
+      padding-bottom: 72px;
+    }
+
+    #platforms[data-mode="platforms"] .fun-learning {
+      display: none;
+    }
+
+    #platforms[data-mode="fun"] .section > .section-heading:first-child,
+    #platforms[data-mode="fun"] .platform-grid {
+      display: none;
+    }
+
+    #platforms[data-mode="fun"] .fun-learning {
+      margin-top: 0;
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .course-view .platform-card {
+      grid-template-rows: 240px minmax(0, 1fr);
+    }
+
+    .course-view .platform-media {
+      isolation: isolate;
+      background: #f7f8fb;
+    }
+
+    .course-view .platform-copy,
+    .course-view .fun-body {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .course-view .fun-learning .section-heading {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .course-view .fun-grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .course-view .toefl-wrap {
+      margin-top: 10px;
+    }
+
+    @media (max-width: 1040px) {
+      .course-app .nav {
+        width: min(100% - 28px, 1440px);
+      }
+
+      .hub-grid,
+      .course-view .theme-grid,
+      .course-view .connection-grid,
+      .course-view .discussion-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hub-shell { width: min(900px, calc(100% - 32px)); }
+      .course-view .showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .course-view .reading-feature-wide { grid-column: 1 / -1; }
+      .method-drawer .learning-loop { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .route-title { display: none; }
+    }
+
+    @media (max-width: 720px) {
+      .course-app .site-header,
+      .course-app .nav { height: 62px; min-height: 62px; }
+      .course-view { top: 62px; }
+      .course-app .brand { font-size: .96rem; }
+      .nav-route { margin-left: auto; }
+      .route-divider,
+      .view-controls span { display: none; }
+      .course-hub-button { font-size: 10px; }
+      .view-controls { gap: 5px; }
+      .view-controls button { width: 32px; height: 32px; }
+      .hub-shell { width: min(100% - 24px, 680px); padding-top: 24px; }
+      .hub-heading h1 { font-size: clamp(2.9rem, 14vw, 5.2rem); }
+      .hub-heading > p:last-child { margin-top: 12px; }
+      .hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .hub-tile { min-height: 128px; border-radius: 19px; padding: 15px; }
+      .hub-icon { top: 12px; left: 12px; width: 34px; height: 34px; }
+      .hub-label small { display: none; }
+      .hub-arrow { right: 12px; bottom: 12px; }
+      .course-view.section { padding-top: 34px; }
+      .course-view .showcase-inner,
+      .course-view .discussion-inner,
+      .course-view .connections-inner,
+      #platforms.course-view > .section { padding-top: 34px; }
+      .course-view .theme-grid,
+      .course-view .connection-grid,
+      .course-view .discussion-grid,
+      .course-view .showcase-grid,
+      .course-view .platform-grid,
+      .course-view .toefl-skills { grid-template-columns: 1fr; }
+      .course-view .theme-card { aspect-ratio: 1.25; }
+      .course-view .reading-feature-wide {
+        grid-column: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 220px auto;
+      }
+      .discussion-card.is-expanded { grid-column: auto; grid-template-columns: 1fr; }
+      .discussion-card.is-expanded .discussion-visual { border-right: 0; border-bottom: 1px solid rgba(18, 33, 63, 0.1); }
+      .method-drawer .learning-loop { grid-template-columns: 1fr; }
+      .course-view .fun-grid { grid-template-columns: 1fr; }
+      .course-view .fun-card,
+      .course-view .fun-card.featured { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 440px) {
+      .course-app .brand span { font-size: .82rem; }
+      .course-hub-button { width: 34px; overflow: hidden; white-space: nowrap; }
+      .course-hub-button span { margin-right: 18px; }
+      .view-controls { display: none; }
+      .hub-heading .eyebrow { display: none; }
+      .hub-grid { grid-template-columns: 1fr; }
+      .hub-tile { min-height: 112px; }
+      .welcome-copy h1 { font-size: 18vw; }
+    }
+
     @media print {
       .site-header,
       .hero-actions,
@@ -1681,65 +2436,103 @@
     }
   </style>
 </head>
-<body>
+<body class="course-app">
   <a class="skip-link" href="#main">Skip to the course introduction</a>
+
+  <div class="welcome-screen" id="welcomeScreen" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+    <div class="welcome-orbit orbit-one" aria-hidden="true"></div>
+    <div class="welcome-orbit orbit-two" aria-hidden="true"></div>
+    <div class="welcome-copy">
+      <p>Discover Futures 4 · IS English</p>
+      <h1 id="welcomeTitle">PREP <span>IS</span> COURSE</h1>
+      <div class="welcome-line" aria-hidden="true"></div>
+      <p class="welcome-tagline">Explore · Learn · Grow</p>
+      <button class="welcome-enter" id="welcomeEnter" type="button">Enter the course <span aria-hidden="true">→</span></button>
+    </div>
+  </div>
 
   <header class="site-header">
     <nav class="nav" aria-label="Course introduction">
-      <a class="brand" href="#top">
-        <span class="brand-mark" aria-hidden="true">✦</span>
-        <span>Discover Futures 4</span>
-      </a>
-      <div class="nav-links">
-        <a href="#themes">Theme challenge</a>
-        <a href="#connections">Course connections</a>
-        <a href="#learning">How we learn</a>
-        <a href="#activities">Learning activities</a>
-        <a href="#platforms">Our platforms</a>
-        <a href="#target">TOEFL ITP</a>
+      <button class="brand" type="button" data-open-view="home" aria-label="Return to the Course Hub">
+        <span>PREP <em>IS</em> COURSE</span>
+      </button>
+      <div class="nav-route" aria-live="polite">
+        <button class="course-hub-button" type="button" data-open-view="home">
+          <span aria-hidden="true">←</span> Course Hub
+        </button>
+        <span class="route-divider" aria-hidden="true"></span>
+        <span class="route-title" id="routeTitle">Home</span>
+      </div>
+      <div class="view-controls" aria-label="Section navigation">
+        <button id="previousView" type="button" aria-label="Previous course section">←</button>
+        <span id="viewCount">1 / 9</span>
+        <button id="nextView" type="button" aria-label="Next course section">→</button>
       </div>
     </nav>
   </header>
 
   <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-inner">
-        <div>
-          <p class="eyebrow">IS English · Course Introduction</p>
-          <h1>Eight big questions. <span>One year of stronger English.</span></h1>
-          <p class="hero-lead">
-            Discover Futures 4 uses ideas from music, money, reading, competition,
-            memory, home, color and speed to develop the language—and the thinking—
-            needed for real communication and our year-end TOEFL ITP target.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#themes">Start the theme challenge <span aria-hidden="true">↓</span></a>
-            <a class="button button-secondary" href="#target">See our ultimate target</a>
-          </div>
+    <section class="hero course-view is-active" id="top" data-view="home" aria-labelledby="hubTitle">
+      <div class="hub-shell">
+        <div class="hub-heading">
+          <p class="eyebrow">Discover Futures 4 · IS English</p>
+          <h1 id="hubTitle">PREP <span>IS</span> COURSE</h1>
+          <p>Eight big questions. Connected learning. One year of stronger English.</p>
         </div>
 
-        <aside class="hero-card" aria-label="Course at a glance">
-          <p class="hero-card-kicker">The year at a glance</p>
-          <div class="hero-stat">
-            <strong>8</strong>
-            <span>big thematic questions to investigate</span>
-          </div>
-          <div class="hero-stat">
-            <strong>4</strong>
-            <span>core skills working together every week</span>
-          </div>
-          <div class="hero-stat">
-            <strong>1</strong>
-            <span>shared destination: TOEFL ITP</span>
-          </div>
-        </aside>
+        <div class="hub-grid" aria-label="Course introduction sections">
+          <button class="hub-tile tile-themes" type="button" data-open-view="themes">
+            <span class="hub-icon" aria-hidden="true">◫</span>
+            <span class="hub-label"><strong>Themes</strong><small>Guess our eight big questions</small></span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="hub-tile tile-connections" type="button" data-open-view="connections">
+            <span class="hub-icon" aria-hidden="true">⌘</span>
+            <span class="hub-label"><strong>Connections</strong><small>Four courses, shared inquiry</small></span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="hub-tile tile-reading" type="button" data-open-view="reading">
+            <span class="hub-icon" aria-hidden="true">▤</span>
+            <span class="hub-label"><strong>Reading</strong><small>Stories, mysteries and choices</small></span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="hub-tile tile-discussion" type="button" data-open-view="discussion">
+            <span class="hub-icon" aria-hidden="true">◌</span>
+            <span class="hub-label"><strong>Discussion</strong><small>Eight ways to think together</small></span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="hub-tile tile-games" type="button" data-open-view="games">
+            <span class="hub-icon" aria-hidden="true">✦</span>
+            <span class="hub-label"><strong>Games</strong><small>Vocabulary and language revision</small></span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="hub-tile tile-platforms" type="button" data-open-view="platforms">
+            <span class="hub-icon" aria-hidden="true">▱</span>
+            <span class="hub-label"><strong>Platforms</strong><small>Sensations and Scribo</small></span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="hub-tile tile-fun" type="button" data-open-view="fun-english">
+            <span class="hub-icon" aria-hidden="true">♫</span>
+            <span class="hub-label"><strong>Fun English</strong><small>English beyond the classroom</small></span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="hub-tile tile-toefl" type="button" data-open-view="toefl">
+            <span class="hub-icon" aria-hidden="true">↗</span>
+            <span class="hub-label"><strong>TOEFL ITP</strong><small>Our year-end destination</small></span>
+            <span class="hub-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <div class="hub-footer">
+          <span>Explore</span><i aria-hidden="true"></i><span>Learn</span><i aria-hidden="true"></i><span>Grow</span>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="themes">
+    <section class="section course-view" id="themes" data-view="themes" aria-labelledby="themesHeading">
       <div class="section-heading center">
         <span class="section-label">The opening challenge</span>
-        <h2>Can you guess what we will explore?</h2>
+        <h2 id="themesHeading">Can you guess what we will explore?</h2>
         <p>
           Look closely before clicking. Discuss what you notice, predict the unit’s
           big question and connect the image to something you already know.
@@ -1767,11 +2560,11 @@
       </div>
     </section>
 
-    <section class="connections-section" id="connections">
+    <section class="connections-section course-view" id="connections" data-view="connections" aria-labelledby="connectionsHeading">
       <div class="connections-inner">
         <div class="section-heading">
           <span class="section-label">Interdisciplinary learning</span>
-          <h2>One big question. Four connected classrooms.</h2>
+          <h2 id="connectionsHeading">One big question. Four connected classrooms.</h2>
           <p>
             IS English, Theory of Knowledge, CS Course and EFS Sustainable Development
             approach the same issue from different angles. Switch terms to see two examples.
@@ -1814,13 +2607,42 @@
           </div>
           <div class="shared-outcome"><strong>Shared outcome:</strong> a “When Should We Slow Down?” future forum where teams evaluate one school or city system and defend a sustainable recommendation.</div>
         </article>
+
+        <details class="method-drawer">
+          <summary>
+            <span><strong>How we learn</strong> · See the four-step learning loop</span>
+            <span aria-hidden="true">＋</span>
+          </summary>
+          <div class="learning-loop">
+            <article class="loop-card" data-step="1">
+              <div class="loop-icon" aria-hidden="true">◉</div>
+              <h3>Explore</h3>
+              <p>Begin with a big question, observe real-world ideas and activate what you already know.</p>
+            </article>
+            <article class="loop-card" data-step="2">
+              <div class="loop-icon" aria-hidden="true">⌁</div>
+              <h3>Read & listen</h3>
+              <p>Find main ideas, evidence, relationships and implied meaning across different kinds of texts.</p>
+            </article>
+            <article class="loop-card" data-step="3">
+              <div class="loop-icon" aria-hidden="true">↗</div>
+              <h3>Speak & write</h3>
+              <p>Turn ideas into discussions, explanations, arguments, reviews and carefully structured writing.</p>
+            </article>
+            <article class="loop-card" data-step="4">
+              <div class="loop-icon" aria-hidden="true">✓</div>
+              <h3>Reflect & improve</h3>
+              <p>Use feedback, revise your choices and transfer each new strategy to the next challenge.</p>
+            </article>
+          </div>
+        </details>
       </div>
     </section>
 
-    <section class="section" id="learning">
+    <section class="section supporting-section" id="learning" aria-labelledby="learningHeading">
       <div class="section-heading">
         <span class="section-label">How we learn</span>
-        <h2>A simple loop, repeated with better questions.</h2>
+        <h2 id="learningHeading">A simple loop, repeated with better questions.</h2>
         <p>
           Each unit connects content, communication and reflection. We do more than
           collect vocabulary: we use English to notice, question, explain and improve.
@@ -1851,11 +2673,11 @@
       </div>
     </section>
 
-    <section class="showcase-section" id="activities">
+    <section class="showcase-section course-view" id="activities" data-view="reading" aria-labelledby="readingHeading">
       <div class="showcase-inner">
         <div class="section-heading">
           <span class="section-label">Reading in different ways</span>
-          <h2>Different Reading Activities That Help Us Reach Our Goals</h2>
+          <h2 id="readingHeading">Different Reading Activities That Help Us Reach Our Goals</h2>
           <p>
             Reading will not mean doing the same task every time. We will interpret
             images, follow branching stories, compare voices, investigate clues and
@@ -1965,11 +2787,11 @@
       </div>
     </section>
 
-    <section class="discussion-section" id="discussion">
+    <section class="discussion-section course-view" id="discussion" data-view="discussion" aria-labelledby="discussionHeading">
       <div class="discussion-inner">
         <div class="section-heading center">
           <span class="section-label">Purposeful classroom talk</span>
-          <h2>Discussion Types We Will Use</h2>
+          <h2 id="discussionHeading">Discussion Types We Will Use</h2>
           <p>
             Different questions need different ways of talking. These routines make
             space for thinking, careful listening, questioning, collaboration and
@@ -2173,11 +2995,11 @@
       </div>
     </section>
 
-    <section class="showcase-section games-showcase" id="games">
+    <section class="showcase-section games-showcase course-view" id="games" data-view="games" aria-labelledby="gamesHeading">
       <div class="showcase-inner">
         <div class="section-heading">
           <span class="section-label">Practise, retrieve, replay</span>
-          <h2>Vocabulary & Language Revision Games We Will Play</h2>
+          <h2 id="gamesHeading">Vocabulary & Language Revision Games We Will Play</h2>
           <p>
             These online and classroom games turn retrieval practice into a shared
             challenge. We will revisit vocabulary, grammar and speaking language in
@@ -2315,11 +3137,11 @@
       </div>
     </dialog>
 
-    <section class="platform-section" id="platforms">
+    <section class="platform-section course-view" id="platforms" data-view="platforms" data-mode="platforms" aria-labelledby="platformsHeading">
       <div class="section">
         <div class="section-heading center">
           <span class="section-label">Our learning platforms</span>
-          <h2>Different tools. Different jobs. One learning journey.</h2>
+          <h2 id="platformsHeading">Different tools. Different jobs. One learning journey.</h2>
           <p>
             Sensations supports differentiated reading routes, while ScriboWriting
             gives our writing process a clear home from first idea to stronger final draft.
@@ -2379,7 +3201,7 @@
         <div class="fun-learning" id="fun-english">
           <div class="section-heading center">
             <span class="section-label">Beyond the lesson</span>
-            <h2>How to Improve Your English in a Fun Way</h2>
+            <h2 id="funEnglishHeading">How to Improve Your English in a Fun Way</h2>
             <p>
               Choose something you genuinely enjoy—news, magazines, music or a
               purposeful quiz—and make English part of your normal week. Short,
@@ -2464,12 +3286,12 @@
       </div>
     </section>
 
-    <section class="section" id="target">
+    <section class="section course-view" id="target" data-view="toefl" aria-labelledby="toeflHeading">
       <div class="toefl-wrap">
         <div class="toefl-top">
           <div class="toefl-copy">
             <span class="section-label">Our ultimate target</span>
-            <h2>TOEFL ITP at the end of the year.</h2>
+            <h2 id="toeflHeading">TOEFL ITP at the end of the year.</h2>
             <p>
               The test is our destination, not the whole journey. Throughout the year,
               the themes, reading pathways, language work and listening practice build
@@ -2507,7 +3329,7 @@
       </div>
     </section>
 
-    <section class="section finale">
+    <section class="section finale supporting-section">
       <div class="finale-card">
         <span class="section-label">Ready?</span>
         <h2>Curiosity → practice → feedback → confidence.</h2>
@@ -2740,6 +3562,185 @@
       previewImage.removeAttribute("src");
       if (lastPreviewTrigger) lastPreviewTrigger.focus();
     });
+
+    const courseViews = [...document.querySelectorAll(".course-view")];
+    const platformView = document.getElementById("platforms");
+    const routeTitle = document.getElementById("routeTitle");
+    const viewCount = document.getElementById("viewCount");
+    const previousViewButton = document.getElementById("previousView");
+    const nextViewButton = document.getElementById("nextView");
+    const welcomeScreen = document.getElementById("welcomeScreen");
+    const welcomeEnter = document.getElementById("welcomeEnter");
+
+    const viewOrder = [
+      "home",
+      "themes",
+      "connections",
+      "reading",
+      "discussion",
+      "games",
+      "platforms",
+      "fun-english",
+      "toefl"
+    ];
+
+    const viewTitles = {
+      home: "Home",
+      themes: "Unit Themes",
+      connections: "Course Connections",
+      reading: "Reading Adventures",
+      discussion: "Discussion Toolkit",
+      games: "Revision Games",
+      platforms: "Learning Platforms",
+      "fun-english": "English Beyond the Classroom",
+      toefl: "TOEFL ITP"
+    };
+
+    const routeAliases = {
+      top: "home",
+      learning: "connections",
+      activities: "reading",
+      target: "toefl",
+      "fun-english": "fun-english"
+    };
+
+    let currentView = "home";
+    let welcomeTimer = null;
+
+    function finishWelcome() {
+      if (!welcomeScreen || welcomeScreen.classList.contains("is-finished")) return;
+      welcomeScreen.classList.add("is-finished");
+      welcomeScreen.setAttribute("aria-hidden", "true");
+      window.clearTimeout(welcomeTimer);
+      const activeView = document.querySelector(".course-view.is-active");
+      if (activeView) activeView.focus({ preventScroll: true });
+    }
+
+    welcomeEnter.addEventListener("click", finishWelcome);
+    welcomeTimer = window.setTimeout(finishWelcome, 2600);
+
+    function normaliseView(value) {
+      const cleanValue = String(value || "").replace(/^#/, "");
+      const matchedValue = routeAliases[cleanValue] || cleanValue;
+      return viewOrder.includes(matchedValue) ? matchedValue : "home";
+    }
+
+    function panelForView(view) {
+      if (view === "fun-english") return platformView;
+      return document.querySelector('[data-view="' + view + '"]');
+    }
+
+    function updateView(view) {
+      const nextView = normaliseView(view);
+      const nextPanel = panelForView(nextView);
+      if (!nextPanel) return;
+
+      const swapView = () => {
+        courseViews.forEach((panel) => {
+          const isTarget = panel === nextPanel;
+          panel.classList.toggle("is-active", isTarget);
+          panel.setAttribute("aria-hidden", String(!isTarget));
+        });
+
+        if (platformView) {
+          platformView.dataset.mode = nextView === "fun-english" ? "fun" : "platforms";
+          platformView.setAttribute(
+            "aria-labelledby",
+            nextView === "fun-english" ? "funEnglishHeading" : "platformsHeading"
+          );
+        }
+
+        currentView = nextView;
+        document.body.dataset.currentView = nextView;
+        routeTitle.textContent = viewTitles[nextView];
+        const viewIndex = viewOrder.indexOf(nextView);
+        viewCount.textContent = String(viewIndex + 1) + " / " + String(viewOrder.length);
+        document.title = viewTitles[nextView] + " | Prep IS Course";
+        nextPanel.scrollTop = 0;
+      };
+
+      if (document.startViewTransition && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.startViewTransition(swapView);
+      } else {
+        swapView();
+      }
+    }
+
+    function navigateTo(view, replace = false) {
+      const nextView = normaliseView(view);
+      updateView(nextView);
+      const nextHash = "#" + nextView;
+      const method = replace ? "replaceState" : "pushState";
+      if (window.location.hash !== nextHash || replace) {
+        window.history[method]({ view: nextView }, "", nextHash);
+      }
+    }
+
+    document.querySelectorAll("[data-open-view]").forEach((control) => {
+      control.addEventListener("click", () => navigateTo(control.dataset.openView));
+    });
+
+    previousViewButton.addEventListener("click", () => {
+      const index = viewOrder.indexOf(currentView);
+      navigateTo(viewOrder[(index - 1 + viewOrder.length) % viewOrder.length]);
+    });
+
+    nextViewButton.addEventListener("click", () => {
+      const index = viewOrder.indexOf(currentView);
+      navigateTo(viewOrder[(index + 1) % viewOrder.length]);
+    });
+
+    function syncViewFromLocation() {
+      const requestedView = normaliseView(window.location.hash);
+      if (requestedView !== currentView) updateView(requestedView);
+    }
+
+    window.addEventListener("popstate", syncViewFromLocation);
+    window.addEventListener("hashchange", syncViewFromLocation);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && currentView !== "home" && !previewDialog.open) {
+        navigateTo("home");
+      }
+
+      if (event.altKey && event.key === "ArrowRight") {
+        event.preventDefault();
+        nextViewButton.click();
+      }
+
+      if (event.altKey && event.key === "ArrowLeft") {
+        event.preventDefault();
+        previousViewButton.click();
+      }
+    });
+
+    document.querySelectorAll(".discussion-card").forEach((card) => {
+      card.tabIndex = 0;
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-expanded", "false");
+
+      const toggleDiscussionCard = () => {
+        const shouldExpand = !card.classList.contains("is-expanded");
+        document.querySelectorAll(".discussion-card.is-expanded").forEach((expandedCard) => {
+          expandedCard.classList.remove("is-expanded");
+          expandedCard.setAttribute("aria-expanded", "false");
+        });
+        card.classList.toggle("is-expanded", shouldExpand);
+        card.setAttribute("aria-expanded", String(shouldExpand));
+        if (shouldExpand) card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      };
+
+      card.addEventListener("click", toggleDiscussionCard);
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          toggleDiscussionCard();
+        }
+      });
+    });
+
+    const initialView = normaliseView(window.location.hash);
+    navigateTo(initialView, true);
 
     renderStatus();
   </script>
